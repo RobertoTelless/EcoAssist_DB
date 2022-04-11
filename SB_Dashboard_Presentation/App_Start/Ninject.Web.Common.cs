@@ -69,37 +69,23 @@ namespace Presentation.Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind(typeof(IAppServiceBase<>)).To(typeof(AppServiceBase<>));
-            kernel.Bind<ICRAppService>().To<CRAppService>();
-            kernel.Bind<ICPAppService>().To<CPAppService>();
-            kernel.Bind<ILPAppService>().To<LPAppService>();
-            kernel.Bind<IPCAppService>().To<PCAppService>();
-            kernel.Bind<IEPAppService>().To<EPAppService>();
-            kernel.Bind<IENAppService>().To<ENAppService>();
-            kernel.Bind<IOSEspAppService>().To<OSEspAppService>();
-            kernel.Bind<IOSSitAppService>().To<OSSitAppService>();
+            kernel.Bind<IClienteAppService>().To<ClienteAppService>();
             kernel.Bind<IOrdemServicoAppService>().To<OrdemServicoAppService>();
+            kernel.Bind<IPrestadorAppService>().To<PrestadorAppService>();
+            kernel.Bind<IAtendimentoAppService>().To<AtendimentoAppService>();
 
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
-            kernel.Bind<ICRService>().To<CRService>();
-            kernel.Bind<ICPService>().To<CPService>();
-            kernel.Bind<ILPService>().To<LPService>();
-            kernel.Bind<IPCService>().To<PCService>();
-            kernel.Bind<IEPService>().To<EPService>();
-            kernel.Bind<IENService>().To<ENService>();
-            kernel.Bind<IOSEspService>().To<OSEspService>();
-            kernel.Bind<IOSSitService>().To<OSSitService>();
             kernel.Bind<IOrdemServicoService>().To<OrdemServicoService>();
+            kernel.Bind<IClienteService>().To<ClienteService>();
+            kernel.Bind<IPrestadorService>().To<PrestadorService>();
+            kernel.Bind<IAtendimentoService>().To<AtendimentoService>();
 
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
-            kernel.Bind<ICRRepository>().To<CRRepository>();
-            kernel.Bind<ICPRepository>().To<CPRepository>();
-            kernel.Bind<ILPRepository>().To<LPRepository>();
-            kernel.Bind<IPCRepository>().To<PCRepository>();
-            kernel.Bind<IEPRepository>().To<EPRepository>();
-            kernel.Bind<IENRepository>().To<ENRepository>();
-            kernel.Bind<IOSEspRepository>().To<OSEspRepository>();
-            kernel.Bind<IOSSitRepository>().To<OSSitRepository>();
             kernel.Bind<IOrdemServicoRepository>().To<OrdemServicoRepository>();
+            kernel.Bind<IClienteRepository>().To<ClienteRepository>();
+            kernel.Bind<IClienteEnderecoRepository>().To<ClienteEnderecoRepository>();
+            kernel.Bind<IPrestadorRepository>().To<PrestadorRepository>();
+            kernel.Bind<IAtendimentoRepository>().To<AtendimentoRepository>();
 
         }
     }

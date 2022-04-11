@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1e6909911af54a34a53849b252ff9e26" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ACONDICIONAMENTO" Width="1.5" PointX="28.5" PointY="54.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ATENDIMENTO_ACOMPANHAMENTO" Width="1.5" PointX="8.25" PointY="62.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ATENDIMENTO_ANEXO" Width="1.5" PointX="5.25" PointY="71" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ATENDIMENTO_STATUS" Width="1.5" PointX="0.75" PointY="41.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.AUDITORIA" Width="1.5" PointX="8.25" PointY="58" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.BANCO" Width="1.5" PointX="4.5" PointY="82.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CARGO" Width="1.5" PointX="3.75" PointY="57" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CATEGORIA_ATENDIMENTO" Width="1.5" PointX="0.75" PointY="43.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CATEGORIA_FORNECEDOR" Width="1.5" PointX="6" PointY="90.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CATEGORIA_PRODUTO" Width="1.5" PointX="6" PointY="103" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CATEGORIA_USUARIO" Width="1.5" PointX="3.75" PointY="53.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CENTRO_CUSTO" Width="1.5" PointX="9" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CLASSE" Width="1.5" PointX="28.5" PointY="56.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE" Width="1.5" PointX="0.75" PointY="46.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_ANEXO" Width="1.5" PointX="3" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_APOLICE" Width="1.5" PointX="20.25" PointY="46.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_CONTATO" Width="1.5" PointX="3" PointY="71.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_ENDERECO" Width="1.5" PointX="15" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_HISTORICO" Width="1.5" PointX="22.5" PointY="62.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_MARKETING_ATIVO" Width="1.5" PointX="11.25" PointY="71.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_PERGUNTA" Width="1.5" PointX="31.5" PointY="67.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_PERGUNTA_OPCAO" Width="1.5" PointX="33.75" PointY="69.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_RESPOSTA" Width="1.5" PointX="36.75" PointY="57" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CNH_CATEGORIA" Width="1.5" PointX="3.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTA_BANCO" Width="1.5" PointX="6.75" PointY="82.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTA_BANCO_ANEXO" Width="1.5" PointX="9" PointY="118.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTA_BANCO_CONTATO" Width="1.5" PointX="9" PointY="121.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTA_BANCO_LANCAMENTO" Width="1.5" PointX="12" PointY="83.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTA_PAGAR" Width="1.5" PointX="11.25" PointY="59.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTA_PAGAR_ANEXO" Width="1.5" PointX="13.5" PointY="72.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTA_PAGAR_PARCELA" Width="1.5" PointX="19.5" PointY="61.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTA_PAGAR_RATEIO" Width="1.5" PointX="19.5" PointY="57.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTA_RECEBER" Width="1.5" PointX="14.25" PointY="59.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTA_RECEBER_ANEXO" Width="1.5" PointX="16.5" PointY="55.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTA_RECEBER_PARCELA" Width="1.5" PointX="16.5" PointY="68.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTA_RECEBER_RATEIO" Width="1.5" PointX="19.5" PointY="67.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTRATO" Width="1.5" PointX="6" PointY="74.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTRATO_ANEXOS" Width="1.5" PointX="8.25" PointY="78.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CONTRATO_ANOTACOES" Width="1.5" PointX="8.25" PointY="66.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.DEPARTAMENTO" Width="1.5" PointX="0.75" PointY="62.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.DESTINADOR" Width="1.5" PointX="9" PointY="48.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.DESTINADOR_ANEXO" Width="1.5" PointX="11.25" PointY="48.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.DESTINADOR_ANOTACOES" Width="1.5" PointX="11.25" PointY="56.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.DESTINADOR_ENVIO" Width="1.5" PointX="28.5" PointY="68.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.DESTINADOR_ENVIO_ANEXO" Width="1.5" PointX="30.75" PointY="71.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.DESTINADOR_ENVIO_ANOTACOES" Width="1.5" PointX="11.25" PointY="68.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.DESTINADOR_ENVIO_PRODUTO" Width="1.5" PointX="30.75" PointY="61" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ESTADO_FISICO" Width="1.5" PointX="28.5" PointY="72.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.FORM_PAGTO_RECTO" Width="1.5" PointX="9" PointY="83.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.FORNECEDOR" Width="1.5" PointX="8.25" PointY="90.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.GRUPO" Width="1.5" PointX="4.5" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ITEM_PEDIDO_COMPRA" Width="1.5" PointX="10.5" PointY="96.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.LEILOEIRO" Width="1.5" PointX="29.25" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.LEILOEIRO_LOTE" Width="1.5" PointX="31.5" PointY="50.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.LEILOEIRO_LOTE_ITENS" Width="1.5" PointX="33.75" PointY="62.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.LINHA_PRODUTO" Width="1.5" PointX="26.25" PointY="55.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.MARCA_VEICULO" Width="1.5" PointX="21" PointY="77.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.MODELO_VEICULO" Width="1.5" PointX="21" PointY="79.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.MOTIVO_FALHA_ORDEM_SERVICO" Width="1.5" PointX="20.25" PointY="54.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ORDEM_SERVICO" Width="1.5" PointX="17.25" PointY="59.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ORDEM_SERVICO_AGENDAMENTO" Width="1.5" PointX="22.5" PointY="56.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ORDEM_SERVICO_AGENDAMENTO_ANOTACAO" Width="1.5" PointX="22.5" PointY="65.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ORDEM_SERVICO_ANEXO" Width="1.5" PointX="19.5" PointY="73.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ORDEM_SERVICO_ANOTACAO" Width="1.5" PointX="25.5" PointY="62.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ORDEM_SERVICO_HISTORICO" Width="1.5" PointX="25.5" PointY="58.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ORDEM_SERVICO_PRESTADOR" Width="1.5" PointX="25.5" PointY="65.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ORDEM_SERVICO_PRODUTO" Width="1.5" PointX="28.5" PointY="60.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ORDEM_SERVICO_PROPOSTA" Width="1.5" PointX="22.5" PointY="69.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ORDEM_SERVICO_PROPOSTA_ANEXO" Width="1.5" PointX="24.75" PointY="70.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ORIGEM" Width="1.5" PointX="9.75" PointY="125.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.ORIGEM_CLIENTE" Width="1.5" PointX="1.5" PointY="52.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PARCEIRO" Width="1.5" PointX="15" PointY="43.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PARCEIRO_CONTATO" Width="1.5" PointX="17.25" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PARCEIRO_ENDERECO" Width="1.5" PointX="17.25" PointY="46.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PARCEIRO_PRECO" Width="1.5" PointX="34.5" PointY="53.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PEDIDO_COMPRA" Width="1.5" PointX="8.25" PointY="96.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PEDIDO_COMPRA_ACOMPANHAMENTO" Width="1.5" PointX="10.5" PointY="78.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PEDIDO_COMPRA_ANEXO" Width="1.5" PointX="10.5" PointY="105.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PERFIL" Width="1.5" PointX="3.75" PointY="68" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PERIODICIDADE" Width="1.5" PointX="9" PointY="74.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PERIODO" Width="1.5" PointX="20.25" PointY="51" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PESQUISA" Width="1.5" PointX="32.25" PointY="87" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PESQUISA_ITEM" Width="1.5" PointX="34.5" PointY="80.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PESQUISA_ITEM_OPCAO" Width="1.5" PointX="36.75" PointY="80.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PESQUISA_RESPOSTA" Width="1.5" PointX="36.75" PointY="76.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PESQUISA_RESPOSTA_ITEM" Width="1.5" PointX="39" PointY="80.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PORTE" Width="1.5" PointX="32.25" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR" Width="1.5" PointX="3.75" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_AJUDANTE" Width="1.5" PointX="12" PointY="40.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_AJUDANTE_ANOTACOES" Width="1.5" PointX="14.25" PointY="56.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_ANEXO" Width="1.5" PointX="6" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_ANOTACOES" Width="1.5" PointX="14.25" PointY="68.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_BANCO" Width="1.5" PointX="17.75" PointY="52" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_CERTIFICADO" Width="1.5" PointX="9" PointY="37.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_CONTATO" Width="1.5" PointX="6" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_ENDERECO" Width="1.5" PointX="31.5" PointY="55.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_ENDERECO_ESTOQUE" Width="1.5" PointX="33.75" PointY="57.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_MOTORISTA" Width="1.5" PointX="6" PointY="42.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_MOTORISTA_ANOTACOES" Width="1.5" PointX="8.25" PointY="54.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_REGIAO" Width="1.5" PointX="8.25" PointY="41.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_VEICULO" Width="1.5" PointX="23.25" PointY="78.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_VEICULO_ANOTACOES" Width="1.5" PointX="8.25" PointY="70.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_VEICULO_CERTIFICADO" Width="1.5" PointX="25.5" PointY="79.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRESTADOR_VEICULO_FUNCAO" Width="1.5" PointX="25.5" PointY="83.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRODUTO_COMPRA" Width="1.5" PointX="8.25" PointY="102.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRODUTO_PERGUNTAS" Width="1.5" PointX="31.5" PointY="83.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRODUTO_PERGUNTAS_OPCAO" Width="1.5" PointX="33.75" PointY="83.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PRODUTOS_RESPOSTA" Width="1.5" PointX="33.75" PointY="66.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.PROPOSTA" Width="1.5" PointX="20.25" PointY="85.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.REGIAO" Width="1.5" PointX="3.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.REGIAO_COBERTURA" Width="1.5" PointX="6" PointY="49.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.STATUS_COLETA" Width="1.5" PointX="26.25" PointY="52.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.STATUS_ORDEM_SERVICO" Width="1.5" PointX="15" PointY="75.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.SUBCATEGORIA_PRODUTO" Width="1.5" PointX="6" PointY="105.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.SUBGRUPO" Width="1.5" PointX="6.75" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TEMPLATE_MENSAGEM" Width="1.5" PointX="9" PointY="109.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TICKET_ATENDIMENTO" Width="1.5" PointX="3" PointY="60.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_CENTRO_CUSTO" Width="1.5" PointX="6.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_CERTIFICADO" Width="1.5" PointX="6.75" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_CERTIFICADO_VEICULO" Width="1.5" PointX="23.25" PointY="75.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_CLIENTE" Width="1.5" PointX="1.5" PointY="55.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_CONTA" Width="1.5" PointX="4.5" PointY="85.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_ITEM_PESQUISA" Width="1.5" PointX="29.25" PointY="83.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_ORDEM_SERVICO" Width="1.5" PointX="15" PointY="78.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_PARCEIRO" Width="1.5" PointX="12.75" PointY="45.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_PESQUISA" Width="1.5" PointX="30" PointY="87.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_PESSOA" Width="1.5" PointX="6" PointY="93" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_PRODUTO" Width="1.5" PointX="26.25" PointY="74" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_RESIDENCIA" Width="1.5" PointX="12.75" PointY="51.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_RESIDUO" Width="1.5" PointX="28.5" PointY="75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TIPO_VEICULO" Width="1.5" PointX="21" PointY="82.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.TRATAMENTO" Width="1.5" PointX="28.5" PointY="77.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.UF" Width="1.5" PointX="3.75" PointY="49.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.UNIDADE" Width="1.5" PointX="28.5" PointY="80" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.USUARIO_ANEXO" Width="1.5" PointX="8.25" PointY="114.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.USUARIO_SUGESTAO" Width="1.5" PointX="6" PointY="57.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.VEICULO_FUNCAO" Width="1.5" PointX="23.25" PointY="83.625" IsExpanded="true" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR349616" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKATENDIMENT641742" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKATENDIMENT810474" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKATENDIMENT457566" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKTICKET_ATE625723" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKAUDITORIA266940" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_BANC816139" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_195884" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKUSUARIO_SU965559" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKTICKET_ATE241147" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKFORNECEDOR675570" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRODUTO_CO296463" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKSUBCATEGOR381994" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKUSUARIO_SU287786" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCENTRO_CUS497258" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCENTRO_CUS717675" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCENTRO_CUS84826" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_PAGA72676" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_PAGA825572" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_RECE574628" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_RECE760490" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR333486" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_AN4606" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_AP70231" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_CO757843" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_EN510475" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_HI453838" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_MA640589" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_RE838963" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE103706" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE431446" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTRATO331141" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV289852" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPESQUISA_R744592" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKTICKET_ATE437720" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_AP127530" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_EN166279" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV416700" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_HI500741" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_CLIENTE_MARKETING_ATIVO_PERIODICIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_CLIENTE_MARKETING_ATIVO_TEMPLATE_MENSAGEM" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_PE36372" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_PE77136" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_PE942059" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCLIENTE_RE809227" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_361006" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_BANC165084" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_BANC166642" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_BANC521858" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_BANC819274" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKFORM_PAGTO400930" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_CONTA_BANCO_LANCAMENTO_ORIGEM" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_PAGA211205" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_PAGA327663" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_PAGA406964" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_PAGA509940" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_PAGA53836" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_PAGA903530" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_PAGA908796" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_PAGA982207" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_PAGA687593" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_RECE138706" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_RECE323226" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_RECE505503" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_RECE528896" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_RECE698069" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_RECE736697" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTA_RECE932762" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTRATO_A60018" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTRATO_A710257" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTRATO133380" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKCONTRATO_A729308" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKTICKET_ATE727603" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKUSUARIO_SU678029" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR47935" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR502865" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR538890" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR792905" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR318385" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR190901" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR529503" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR679247" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR906430" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR672916" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR288851" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR569681" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR579244" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR799302" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKDESTINADOR956222" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKFORNECEDOR245639" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKITEM_PEDID135594" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKSUBGRUPO171192" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKITEM_PEDID131044" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKITEM_PEDID859063" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKLEILOEIRO_216528" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKLEILOEIRO521620" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKLEILOEIRO_972239" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKLEILOEIRO_532803" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV75033" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPARCEIRO_P892883" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKTIPO_PRODU148446" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_855104" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_513141" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV115142" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_ORDEM_SERVICO_USUARIO_SUGESTAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_ORDEM_SERVICO_USUARIO_SUGESTAO1" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV125901" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV166658" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV215004" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV483977" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV541736" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV554833" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV572547" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV696557" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV86722" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV911626" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV988658" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKTICKET_ATE390817" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_ORDEM_SERVICO_AGENDAMENTO_USUARIO_SUGESTAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV138214" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV811603" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_ORDEM_SERVICO_AGENDAMENTO_ANOTACAO_USUARIO_SUGESTAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_ORDEM_SERVICO_ANOTACAO_USUARIO_SUGESTAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV153662" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV145773" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV164813" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV237093" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV815520" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_ORDEM_SERVICO_PRODUTO_PARCEIRO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_ORDEM_SERVICO_PRODUTO_STATUS_COLETA" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV536283" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_460659" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRODUTOS_R947360" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKTICKET_ATE169271" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV46105" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKORDEM_SERV515631" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPARCEIRO_C366964" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPARCEIRO_E880284" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPARCEIRO_P349599" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPARCEIRO877188" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPARCEIRO_E290760" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPARCEIRO_P462214" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPARCEIRO_P467390" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPEDIDO_COM138609" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPEDIDO_COM164592" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPEDIDO_COM378434" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPEDIDO_COM950044" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKUSUARIO_SU487227" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPESQUISA_I132358" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPESQUISA_R298217" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPESQUISA404204" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPESQUISA_I22249" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPESQUISA_I759224" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPESQUISA_R192248" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPESQUISA_R293067" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_128456" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_176609" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_310485" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_424945" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_487732" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_561530" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_652627" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_6929" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_830422" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_880708" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_306511" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_697918" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_PRESTADOR_AJUDANTE_ANOTACOES_USUARIO_SUGESTAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_PRESTADOR_ANOTACOES_USUARIO_SUGESTAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_792924" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_628688" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_614726" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_649765" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_552750" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_995951" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_PRESTADOR_MOTORISTA_ANOTACOES_USUARIO_SUGESTAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_667906" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_969682" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_2349" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_320147" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_45018" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_546480" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_PRESTADOR_VEICULO_ANOTACOES_USUARIO_SUGESTAO" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_358063" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRESTADOR_803886" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRODUTO_CO338827" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRODUTO_CO655182" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRODUTO_PE480646" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRODUTO_PE701437" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRODUTO_PE795442" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKPRODUTOS_R262398" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKREGIAO_COB871090" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKREGIAO_COB317722" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKTICKET_ATE274359" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FKUSUARIO_AN744744" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

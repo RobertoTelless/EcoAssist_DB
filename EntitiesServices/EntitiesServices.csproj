@@ -105,8 +105,451 @@
     <Compile Include="Attributes\CustomValidationCNPJAttribute .cs" />
     <Compile Include="Attributes\CustomValidationCPFAttribute.cs" />
     <Compile Include="Attributes\DataAnteriorAttribute.cs" />
+    <Compile Include="EntitiesServices\AtendimentoService.cs" />
+    <Compile Include="EntitiesServices\PrestadorService.cs" />
+    <Compile Include="EntitiesServices\ClienteService.cs" />
+    <Compile Include="EntitiesServices\OrdemServicoService.cs" />
+    <Compile Include="EntitiesServices\ServiceBase.cs" />
+    <Compile Include="Interfaces\Entities\IAtendimentoService.cs" />
+    <Compile Include="Interfaces\Entities\IPrestadorService.cs" />
+    <Compile Include="Interfaces\Entities\IClienteService.cs" />
+    <Compile Include="Interfaces\Entities\IOrdemServicoService.cs" />
     <Compile Include="Interfaces\Entities\IServiceBase.cs" />
+    <Compile Include="Interfaces\Repositories\IAtendimentoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IClienteEnderecoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IOrdemServicoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPrestadorRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Model\ACONDICIONAMENTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ATENDIMENTO_ACOMPANHAMENTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ATENDIMENTO_ANEXO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ATENDIMENTO_STATUS.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AUDITORIA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BANCO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CARGO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CATEGORIA_ATENDIMENTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CATEGORIA_FORNECEDOR.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CATEGORIA_PRODUTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CATEGORIA_USUARIO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CENTRO_CUSTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CLASSE.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CLIENTE.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CLIENTE_ANEXO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CLIENTE_APOLICE.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CLIENTE_CONTATO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CLIENTE_ENDERECO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CLIENTE_HISTORICO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CLIENTE_MARKETING_ATIVO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CLIENTE_PERGUNTA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CLIENTE_PERGUNTA_OPCAO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CLIENTE_RESPOSTA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CNH_CATEGORIA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTA_BANCO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTA_BANCO_ANEXO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTA_BANCO_CONTATO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTA_BANCO_LANCAMENTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTA_PAGAR.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTA_PAGAR_ANEXO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTA_PAGAR_PARCELA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTA_PAGAR_RATEIO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTA_RECEBER.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTA_RECEBER_ANEXO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTA_RECEBER_PARCELA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTA_RECEBER_RATEIO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTRATO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTRATO_ANEXOS.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONTRATO_ANOTACOES.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DEPARTAMENTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DESTINADOR.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DESTINADOR_ANEXO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DESTINADOR_ANOTACOES.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DESTINADOR_ENVIO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DESTINADOR_ENVIO_ANEXO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DESTINADOR_ENVIO_ANOTACOES.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DESTINADOR_ENVIO_PRODUTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EcoAssis_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EcoAssis_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EcoAssis_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EcoAssis_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EcoAssis_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ESTADO_FISICO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FORM_PAGTO_RECTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FORNECEDOR.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GRUPO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ITEM_PEDIDO_COMPRA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LEILOEIRO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LEILOEIRO_LOTE.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LEILOEIRO_LOTE_ITENS.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LINHA_PRODUTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MARCA_VEICULO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MODELO_VEICULO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MOTIVO_FALHA_ORDEM_SERVICO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDEM_SERVICO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDEM_SERVICO_AGENDAMENTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDEM_SERVICO_AGENDAMENTO_ANOTACAO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDEM_SERVICO_ANEXO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDEM_SERVICO_ANOTACAO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDEM_SERVICO_HISTORICO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDEM_SERVICO_PRESTADOR.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDEM_SERVICO_PRODUTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDEM_SERVICO_PROPOSTA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORDEM_SERVICO_PROPOSTA_ANEXO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORIGEM.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ORIGEM_CLIENTE.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARCEIRO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARCEIRO_CONTATO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARCEIRO_ENDERECO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PARCEIRO_PRECO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PEDIDO_COMPRA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PEDIDO_COMPRA_ACOMPANHAMENTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PEDIDO_COMPRA_ANEXO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PERFIL.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PERIODICIDADE.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PERIODO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PESQUISA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PESQUISA_ITEM.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PESQUISA_ITEM_OPCAO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PESQUISA_RESPOSTA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PESQUISA_RESPOSTA_ITEM.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PORTE.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_AJUDANTE.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_AJUDANTE_ANOTACOES.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_ANEXO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_ANOTACOES.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_BANCO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_CERTIFICADO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_CONTATO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_ENDERECO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_ENDERECO_ESTOQUE.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_MOTORISTA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_MOTORISTA_ANOTACOES.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_REGIAO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_VEICULO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_VEICULO_ANOTACOES.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_VEICULO_CERTIFICADO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRESTADOR_VEICULO_FUNCAO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRODUTOS_RESPOSTA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRODUTO_COMPRA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRODUTO_PERGUNTAS.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PRODUTO_PERGUNTAS_OPCAO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PROPOSTA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\REGIAO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\REGIAO_COBERTURA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\STATUS_COLETA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\STATUS_ORDEM_SERVICO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SUBCATEGORIA_PRODUTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SUBGRUPO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagrams.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TEMPLATE_MENSAGEM.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TICKET_ATENDIMENTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_CENTRO_CUSTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_CERTIFICADO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_CERTIFICADO_VEICULO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_CLIENTE.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_CONTA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_ITEM_PESQUISA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_ORDEM_SERVICO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_PARCEIRO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_PESQUISA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_PESSOA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_PRODUTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_RESIDENCIA.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_RESIDUO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_VEICULO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TRATAMENTO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UF.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UNIDADE.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\USUARIO_ANEXO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\USUARIO_SUGESTAO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\VEICULO_FUNCAO.cs">
+      <DependentUpon>EcoAssis_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkingClasses\CNPJ.cs" />
     <Compile Include="WorkingClasses\Endereco.cs" />
@@ -114,6 +557,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Model\EcoAssis_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EcoAssis_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\EcoAssis_Model.edmx.diagram">
+      <DependentUpon>EcoAssis_Model.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -127,8 +577,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTO\" />
-    <Folder Include="EntitiesServices\" />
-    <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\EcoAssis_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EcoAssis_Model.edmx</DependentUpon>
+      <LastGenOutput>EcoAssis_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\EcoAssis_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EcoAssis_Model.edmx</DependentUpon>
+      <LastGenOutput>EcoAssis_Model.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

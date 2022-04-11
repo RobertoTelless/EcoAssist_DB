@@ -28,7 +28,7 @@ namespace SB_Dashboard_Presentation.Controllers
     public class DashboardController : Controller
     {
         private readonly ICRAppService crApp;
-        private readonly ICPAppService cpApp;
+        private readonly IClienteAppService cpApp;
         private readonly ILPAppService lpApp;
         private readonly IPCAppService pcApp;
         private readonly IEPAppService epApp;
@@ -52,7 +52,7 @@ namespace SB_Dashboard_Presentation.Controllers
         List<OrdemServico> listaOS = new List<OrdemServico>();
         String extensao;
 
-        public DashboardController(ICRAppService crApps, ICPAppService cpApps, ILPAppService lpApps, IPCAppService pcApps, IEPAppService epApps, IENAppService enApps, IOSEspAppService oseApps, IOSSitAppService ossApps, IOrdemServicoAppService OSApps)
+        public DashboardController(ICRAppService crApps, IClienteAppService cpApps, ILPAppService lpApps, IPCAppService pcApps, IEPAppService epApps, IENAppService enApps, IOSEspAppService oseApps, IOSSitAppService ossApps, IOrdemServicoAppService OSApps)
         {
             crApp = crApps;
             cpApp = cpApps;

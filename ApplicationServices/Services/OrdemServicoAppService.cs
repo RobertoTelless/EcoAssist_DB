@@ -13,7 +13,7 @@ using EntitiesServices.DTO;
 
 namespace ApplicationServices.Services
 {
-    public class OrdemServicoAppService : AppServiceBase<OrdemServico>, IOrdemServicoAppService
+    public class OrdemServicoAppService : AppServiceBase<ORDEM_SERVICO>, IOrdemServicoAppService
     {
         private readonly IOrdemServicoService _baseService;
 
@@ -22,34 +22,32 @@ namespace ApplicationServices.Services
             _baseService = baseService;
         }
 
-        public List<OrdemServico> GetAllItens()
+        public List<ORDEM_SERVICO> GetAllItens()
         {
             return _baseService.GetAllItens();
         }
 
-        public List<OrdemServico> GetOSAtraso(DateTime hoje)
+        public Int32 ExecuteFilter(Int32? tipo, Int32? cliente, Int32? status, String numero, DateTime? data, DateTime agendamento, Int32? prestador, out List<ORDEM_SERVICO> objeto)
         {
-            return _baseService.GetOSAtraso(hoje);
+            try
+            {
+                objeto = new List<ORDEM_SERVICO>();
+                Int32 volta = 0;
+
+                // Processa filtro
+                objeto = _baseService.ExecuteFilter(tipo, cliente, status, numero, data, agendamento, prestador);
+                if (objeto.Count == 0)
+                {
+                    volta = 1;
+                }
+                return volta;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
-        public List<OrdemServico> GetAllItensIniciadas()
-        {
-            return _baseService.GetAllItensIniciadas();
-        }
 
-        public List<OrdemServico> GetOSPendencias()
-        {
-            return _baseService.GetOSPendencias();
-        }
-
-        public List<OrdemServico> GetOSPesquisa()
-        {
-            return _baseService.GetOSPesquisa();
-        }
-
-        public List<OrdemServico> GetOSAvaliacao()
-        {
-            return _baseService.GetOSAvaliacao();
-        }
     }
 }

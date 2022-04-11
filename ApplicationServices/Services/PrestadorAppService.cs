@@ -12,34 +12,34 @@ using System.Text.RegularExpressions;
 
 namespace ApplicationServices.Services
 {
-    public class CPAppService : AppServiceBase<vwContasAPagar>, ICPAppService
+    public class PrestadorAppService : AppServiceBase<PRESTADOR>, IPrestadorAppService
     {
-        private readonly ICPService _baseService;
+        private readonly IPrestadorService _baseService;
 
-        public CPAppService(ICPService baseService) : base(baseService)
+        public PrestadorAppService(IPrestadorService baseService) : base(baseService)
         {
             _baseService = baseService;
         }
 
-        public List<vwContasAPagar> GetAllItens()
+        public List<PRESTADOR> GetAllItens()
         {
             return _baseService.GetAllItens();
         }
 
-        public List<vwContasAPagar> GetByData(DateTime data)
+        public List<PRESTADOR> GetByNome(String nome)
         {
-            return _baseService.GetByData(data);
+            return _baseService.GetByNome(nome);
         }
 
-        public Int32 ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? pagInicio, DateTime? pagFinal, String centroCusto, String beneficiario, String libPag, Int32? crit, out List<vwContasAPagar > objeto)
+        public Int32 ExecuteFilter(String nome, String razao, String cnpj, String cidade, Int32? uf, out List<PRESTADOR > objeto)
         {
             try
             {
-                objeto = new List<vwContasAPagar>();
+                objeto = new List<PRESTADOR>();
                 Int32 volta = 0;
 
                 // Processa filtro
-                objeto = _baseService.ExecuteFilter(emissaoInicio, emissaoFinal, vencInicio, vencFinal, pagInicio, pagFinal, centroCusto, beneficiario, libPag, crit);
+                objeto = _baseService.ExecuteFilter(nome, razao, cnpj, cidade,uf);
                 if (objeto.Count == 0)
                 {
                     volta = 1;

@@ -8,14 +8,10 @@ using EntitiesServices.DTO;
 
 namespace ApplicationServices.Interfaces
 {
-    public interface IOrdemServicoAppService : IAppServiceBase<OrdemServico>
+    public interface IOrdemServicoAppService : IAppServiceBase<ORDEM_SERVICO>
     {
-        List<OrdemServico> GetAllItens();
-        List<OrdemServico> GetOSAtraso(DateTime hoje);
-        List<OrdemServico> GetAllItensIniciadas();
-        List<OrdemServico> GetOSPendencias();
-        List<OrdemServico> GetOSPesquisa();
-        List<OrdemServico> GetOSAvaliacao();
+        List<ORDEM_SERVICO> GetAllItens();
+        Int32 ExecuteFilter(Int32? tipo, Int32? cliente, Int32? status, String numero, DateTime? data, DateTime agendamento, Int32? prestador, out List<ORDEM_SERVICO> objeto);
 
     }
 }
