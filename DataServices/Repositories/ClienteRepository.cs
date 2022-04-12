@@ -17,7 +17,7 @@ namespace DataServices.Repositories
         public List<CLIENTE> GetAllItens()
         {
             IQueryable<CLIENTE> query = Db.CLIENTE;
-            query = query.Where(p => p.CLIE_IN_ATIVO == 1);
+            //query = query.Where(p => p.CLIE_IN_ATIVO == 1);
             return query.ToList();
         }
 

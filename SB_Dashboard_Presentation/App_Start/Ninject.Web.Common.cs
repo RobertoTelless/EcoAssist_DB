@@ -86,6 +86,8 @@ namespace Presentation.Start
             kernel.Bind<IClienteEnderecoRepository>().To<ClienteEnderecoRepository>();
             kernel.Bind<IPrestadorRepository>().To<PrestadorRepository>();
             kernel.Bind<IAtendimentoRepository>().To<AtendimentoRepository>();
+            kernel.Bind<ITipoClienteRepository>().To<TipoClienteRepository>();
+            kernel.Bind<IOrigemClienteRepository>().To<OrigemClienteRepository>();
 
         }
     }

@@ -9,7 +9,6 @@ using ApplicationServices.Interfaces;
 using ModelServices.Interfaces.EntitiesServices;
 using CrossCutting;
 using System.Text.RegularExpressions;
-using EntitiesServices.DTO;
 
 namespace ApplicationServices.Services
 {

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EntitiesServices.Model;
-using EntitiesServices.DTO;
 
 namespace ModelServices.Interfaces.Repositories
 {

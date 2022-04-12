@@ -2665,6 +2665,7 @@
     <Content Include="amcharts4\themes\patterns.js.map" />
     <Content Include="amcharts4\themes\spiritedaway.js.map" />
     <Content Include="Imagens\PDF1.pdf" />
+    <None Include="Properties\PublishProfiles\DBMasterData - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\ModelosDashboard - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\on-suite-dashboards - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\on-suite-dashboards - ReadOnly - FTP.pubxml" />

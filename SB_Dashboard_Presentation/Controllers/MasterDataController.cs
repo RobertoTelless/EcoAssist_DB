@@ -63,6 +63,7 @@ namespace SB_Dashboard_Presentation.Controllers
             Session["ListaOS"] = null;
             Session["ListaAtendimento"] = null;
             return RedirectToAction("MontarTelaCliente", "MasterData");
+
         }
 
         [HttpGet]
@@ -72,7 +73,8 @@ namespace SB_Dashboard_Presentation.Controllers
             List<CLIENTE> listaCli = cliApp.GetAllItens();
             Int32 cliAtivo = listaCli.Where(p => p.CLIE_IN_ATIVO == 1).ToList().Count;
             Int32 cliInativo = listaCli.Where(p => p.CLIE_IN_ATIVO == 0).ToList().Count;
-            ViewBag.CliAtivo = cliAtivo;    
+            List<CLIENTE> listaCliAtivo = listaCli.Where(p => p.CLIE_IN_ATIVO == 1).ToList();
+            ViewBag.CliAtivo = cliAtivo;
             ViewBag.CliInativo = cliInativo;  
             Session["CliAtivo"] = cliAtivo;
             Session["CliInativo"] = cliInativo;
@@ -90,10 +92,10 @@ namespace SB_Dashboard_Presentation.Controllers
             }
             ViewBag.ListaClienteDia = listaMod;
             Session["ListaClienteDatas"] = datas;
-            Session["ListaClienteDia"] = listaCli;
+            Session["ListaClienteDia"] = listaCliAtivo;
 
             // Evolucao por mes/ano
-            List<DateTime> meses = listaCli.Select(p => p.CLIE_DT_CADASTRO.Date).Distinct().ToList();
+            List<DateTime> meses = listaCliAtivo.Select(p => p.CLIE_DT_CADASTRO.Date).Distinct().ToList();
             meses.Sort((x, y) => x.Date.CompareTo(y.Date));
             List<ModeloViewModel> listaMod1 = new List<ModeloViewModel>();
             String ind = String.Empty;
@@ -103,7 +105,7 @@ namespace SB_Dashboard_Presentation.Controllers
                 if (ind != ind1)
                 {
                     ind = ind1;
-                    Int32? conta1 = listaCli.Where(m => m.CLIE_DT_CADASTRO.Month == item.Month & m.CLIE_DT_CADASTRO.Year == item.Year).ToList().Count;
+                    Int32? conta1 = listaCliAtivo.Where(m => m.CLIE_DT_CADASTRO.Month == item.Month & m.CLIE_DT_CADASTRO.Year == item.Year).ToList().Count;
                     ModeloViewModel mod1 = new ModeloViewModel();
                     mod1.Nome = item.Month.ToString() + "/" + item.Year.ToString();
                     mod1.Valor1 = conta1.Value;
@@ -125,7 +127,7 @@ namespace SB_Dashboard_Presentation.Controllers
             ViewBag.Pessoas = new SelectList(pessoa, "Value", "Text");
             ViewBag.Listas = (List<CLIENTE>)Session["ListaCliente"];
             ViewBag.Tipos = new SelectList(cliApp.GetAllTipos(), "TICL_CD_ID", "TICL_NM_NOME");
-            ViewBag.Origens = new SelectList(cliApp.GetAllOrigens(), "TICL_CD_ID", "TICL_NM_NOME");
+            ViewBag.Origens = new SelectList(cliApp.GetAllOrigens(), "ORCL_CD_ID", "ORCL_NM_NOME");
 
             // Monta objeto de filtro
             CLIENTE objeto = new CLIENTE();
