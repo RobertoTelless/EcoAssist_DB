@@ -17,6 +17,7 @@ namespace DataServices.Repositories
         public List<CLIENTE> GetAllItens()
         {
             IQueryable<CLIENTE> query = Db.CLIENTE;
+            query = query.Where(p => p.CLIE_IN_ATIVO == 1);
             return query.ToList();
         }
 
@@ -61,6 +62,7 @@ namespace DataServices.Repositories
             }
             if (query != null)
             {
+                query = query.Where(p => p.CLIE_IN_ATIVO == 1);
                 query = query.OrderByDescending(a => a.CLIE_NM_NOME);
                 lista = query.ToList<CLIENTE>();
             }

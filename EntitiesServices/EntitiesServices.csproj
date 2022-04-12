@@ -118,6 +118,8 @@
     <Compile Include="Interfaces\Repositories\IAtendimentoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IClienteEnderecoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IOrdemServicoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IOrigemClienteRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITipoClienteRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPrestadorRepository.cs" />
     <Compile Include="Interfaces\Repositories\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />

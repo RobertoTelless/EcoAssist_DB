@@ -19,11 +19,15 @@ namespace ModelServices.EntitiesServices
     public class ClienteService : ServiceBase<CLIENTE>, IClienteService
     {
         private readonly IClienteRepository _baseRepository;
+        private readonly ITipoClienteRepository _tipoRepository;
+        private readonly IOrigemClienteRepository _origRepository;
         protected DB_EcoBaseEntities Db = new DB_EcoBaseEntities();
 
-        public ClienteService(IClienteRepository baseRepository) : base(baseRepository)
+        public ClienteService(IClienteRepository baseRepository, ITipoClienteRepository tipoRepository, IOrigemClienteRepository origRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
+            _tipoRepository = tipoRepository;
+            _origRepository = origRepository;
         }
 
         public List<CLIENTE> GetAllItens()
@@ -38,6 +42,16 @@ namespace ModelServices.EntitiesServices
         public List<CLIENTE> ExecuteFilter(Int32? tipo, Int32? origem, String nome, String razao, Int32? pessoa, String cpf, String cnpj, String cidade, Int32? uf)
         {
             return _baseRepository.ExecuteFilter(tipo, origem, nome, razao, pessoa, cpf, cnpj, cidade, uf);
+        }
+
+        public List<TIPO_CLIENTE> GetAllTipos()
+        {
+            return _tipoRepository.GetAllItens();
+        }
+
+        public List<ORIGEM_CLIENTE> GetAllOrigens()
+        {
+            return _origRepository.GetAllItens();
         }
 
     }

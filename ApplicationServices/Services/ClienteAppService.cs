@@ -31,6 +31,16 @@ namespace ApplicationServices.Services
             return _baseService.GetByNome(nome);
         }
 
+        public List<TIPO_CLIENTE> GetAllTipos()
+        {
+            return _baseService.GetAllTipos();
+        }
+
+        public List<ORIGEM_CLIENTE> GetAllOrigens()
+        {
+            return _baseService.GetAllOrigens();
+        }
+
         public Int32 ExecuteFilter(Int32? tipo, Int32? origem, String nome, String razao, Int32? pessoa, String cpf, String cnpj, String cidade, Int32? uf, out List<CLIENTE > objeto)
         {
             try

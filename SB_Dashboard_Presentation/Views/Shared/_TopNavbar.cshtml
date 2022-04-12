@@ -1,7 +1,6 @@
 @using Inspinia_MVC5;
 @using Presentation.Extensions
 @using CrossCutting;
-@using EntitiesServices.Work_Classes;
 <div class="row border-bottom">
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="row">
@@ -11,12 +10,13 @@
                 </div>
                 <div class="col-lg-2 col-md-2 col-xs-12">
                     @*<h2 style="color: green; font-weight: bold">São Bento Engenharia Ltda</h2>*@
-                    <h2 style="color: green; font-weight: bold">Dashboards</h2>
+                    <h2 style="color: green; font-weight: bold">Master Data</h2>
                 </div>
                 <div class="col-lg-5 col-md-5 col-xs-12" style="vertical-align: middle; margin-top: 15px">
-                    @Html.ButtonLinkIndex(text: "Fluxo de Caixa", action: "MontarTelaFluxoCaixa", controller: "Dashboard", buttonClass: "success")
-                    @Html.ButtonLinkIndex(text: "Operacional", action: "MontarTelaOperacional", controller: "Dashboard", buttonClass: "success")
-                    @Html.ButtonLinkIndex(text: "Business Inteligence", action: "MontarTelaBI", controller: "Dashboard", buttonClass: "success")
+                    @Html.ButtonLinkIndex(text: "Clientes", action: "MontarTelaCliente", controller: "MasterData", buttonClass: "success")
+                    @Html.ButtonLinkIndex(text: "Prestadores", action: "MontarTelaPrestador", controller: "MasterData", buttonClass: "success")
+                    @Html.ButtonLinkIndex(text: "Ordens de Serviço", action: "MontarTelaOrdemServico", controller: "MasterData", buttonClass: "success")
+                    @Html.ButtonLinkIndex(text: "Atendimentos", action: "MontarTelaAtendimento", controller: "MasterData", buttonClass: "success")
                 </div>                    
                 <div class="col-lg-4 col-md-4 col-xs-12" style="vertical-align: middle; margin-top: 15px">
                     @Html.ButtonLinkIndex(text: "Tela Inicial", action: "Index", controller: "Dashboard")

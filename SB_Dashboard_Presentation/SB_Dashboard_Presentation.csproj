@@ -3513,12 +3513,16 @@
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_TopNavbar.cshtml" />
     <Content Include="Views\Shared\_SkinConfig.cshtml" />
+    <Content Include="Views\MasterData\MontarTelaCliente.cshtml" />
+    <Content Include="Views\MasterData\MontarTelaPrestador.cshtml" />
+    <Content Include="Views\MasterData\MontarTelaOrdemServico.cshtml" />
+    <Content Include="Views\MasterData\MontarTelaAtendimento.cshtml" />
+    <Content Include="Views\MasterData\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\MasterData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
