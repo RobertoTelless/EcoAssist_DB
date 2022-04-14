@@ -38,5 +38,6 @@ namespace EntitiesServices.Model
         public virtual TIPO_RESIDENCIA TIPO_RESIDENCIA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDEM_SERVICO> ORDEM_SERVICO { get; set; }
+        public virtual UF UF { get; set; }
     }
 }

@@ -39,6 +39,11 @@ namespace ModelServices.EntitiesServices
         {
             return _baseRepository.GetByNome(nome);
         }
+        public CLIENTE GetItemById(Int32 id)
+        {
+            return _baseRepository.GetItemById(id);
+        }
+
         public List<CLIENTE> ExecuteFilter(Int32? tipo, Int32? origem, String nome, String razao, Int32? pessoa, String cpf, String cnpj, String cidade, Int32? uf)
         {
             return _baseRepository.ExecuteFilter(tipo, origem, nome, razao, pessoa, cpf, cnpj, cidade, uf);

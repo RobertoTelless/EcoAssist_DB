@@ -31,6 +31,11 @@ namespace ApplicationServices.Services
             return _baseService.GetByNome(nome);
         }
 
+        public CLIENTE GetItemById(Int32 id)
+        {
+            return _baseService.GetItemById(id);
+        }
+
         public List<TIPO_CLIENTE> GetAllTipos()
         {
             return _baseService.GetAllTipos();

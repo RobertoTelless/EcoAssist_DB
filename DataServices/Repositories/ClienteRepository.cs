@@ -28,6 +28,20 @@ namespace DataServices.Repositories
             return query.ToList();
         }
 
+        public CLIENTE GetItemById(Int32 id)
+        {
+            IQueryable<CLIENTE> query = Db.CLIENTE;
+            query = query.Where(p => p.CLIE_CD_ID == id);
+            query = query.Include(p => p.CLIENTE_ANEXO);
+            query = query.Include(p => p.CLIENTE_APOLICE);
+            query = query.Include(p => p.CLIENTE_CONTATO);
+            query = query.Include(p => p.CLIENTE_ENDERECO);
+            query = query.Include(p => p.CLIENTE_HISTORICO);
+            query = query.Include(p => p.CLIENTE_MARKETING_ATIVO);
+            query = query.Include(p => p.CLIENTE_RESPOSTA);
+            return query.FirstOrDefault();
+        }
+
         public List<CLIENTE> ExecuteFilter(Int32? tipo, Int32? origem, String nome, String razao, Int32? pessoa, String cpf, String cnpj, String cidade, Int32? uf)
         {
             List<CLIENTE> lista = new List<CLIENTE>();

@@ -338,6 +338,7 @@
         <AssociationConnector Association="DB_EcoBaseModel.FKREGIAO_COB317722" ManuallyRouted="false" />
         <AssociationConnector Association="DB_EcoBaseModel.FKTICKET_ATE274359" ManuallyRouted="false" />
         <AssociationConnector Association="DB_EcoBaseModel.FKUSUARIO_AN744744" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_EcoBaseModel.FK_CLIENTE_ENDERECO_UF" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

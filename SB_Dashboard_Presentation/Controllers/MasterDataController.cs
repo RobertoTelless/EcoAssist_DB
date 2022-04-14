@@ -70,7 +70,9 @@ namespace SB_Dashboard_Presentation.Controllers
         public ActionResult MontarTelaCliente()
         {
             // Carrega lista completa e dados basicos
-            List<CLIENTE> listaCli = cliApp.GetAllItens();
+            List<CLIENTE> listaCli = new List<CLIENTE>();
+            listaCli = cliApp.GetAllItens();
+            Session["ListaClienteCompleta"] = listaCli;
             Int32 cliAtivo = listaCli.Where(p => p.CLIE_IN_ATIVO == 1).ToList().Count;
             Int32 cliInativo = listaCli.Where(p => p.CLIE_IN_ATIVO == 0).ToList().Count;
             List<CLIENTE> listaCliAtivo = listaCli.Where(p => p.CLIE_IN_ATIVO == 1).ToList();
@@ -81,6 +83,7 @@ namespace SB_Dashboard_Presentation.Controllers
 
             // Registros / Dia
             List<DateTime> datas = listaCli.Where(m => m.CLIE_DT_CADASTRO.Month == DateTime.Today.Date.Month & m.CLIE_DT_CADASTRO.Year == DateTime.Today.Date.Year).Select(p => p.CLIE_DT_CADASTRO.Date).Distinct().ToList();
+            datas.Sort((x, y) => x.Date.CompareTo(y.Date));
             List<ModeloViewModel> listaMod = new List<ModeloViewModel>();
             foreach (DateTime item in datas)
             {
@@ -119,8 +122,10 @@ namespace SB_Dashboard_Presentation.Controllers
             // Carrega lista de filtros
             if ((List<CLIENTE>)Session["ListaCliente"] == null)
             {
-                Session["ListaCliente"] = cliApp.GetAllItens();
+                listaCli = (List<CLIENTE>)Session["ListaClienteCompleta"];
+                Session["ListaCliente"] = listaCli;
             }
+
             List<SelectListItem> pessoa = new List<SelectListItem>();
             pessoa.Add(new SelectListItem() { Text = "Física", Value = "1" });
             pessoa.Add(new SelectListItem() { Text = "Jurídica", Value = "2" });
@@ -130,6 +135,7 @@ namespace SB_Dashboard_Presentation.Controllers
             ViewBag.Origens = new SelectList(cliApp.GetAllOrigens(), "ORCL_CD_ID", "ORCL_NM_NOME");
 
             // Monta objeto de filtro
+            Session["VoltaCliente"] = 1;
             CLIENTE objeto = new CLIENTE();
             objeto.CLIE_IN_ATIVO = 1;
             return View(objeto);
@@ -145,10 +151,6 @@ namespace SB_Dashboard_Presentation.Controllers
                 Int32 volta = cliApp.ExecuteFilter(item.TICL_CD_ID, item.ORCL_CD_ID, item.CLIE_NM_NOME, item.CLIE_NM_RAZAO_SOCIAL, item.CLIE_IN_TIPO_PESSOA, item.CLIE_NR_CPF, item.CLIE_NR_CNPJ, null, null, out listaObj);
 
                 // Verifica retorno
-                if (volta == 1)
-                {
-                    return RedirectToAction("MontarTelaCliente");
-                }
 
                 // Sucesso
                 Session["ListaCliente"] = listaObj;
@@ -164,7 +166,14 @@ namespace SB_Dashboard_Presentation.Controllers
         public ActionResult RetirarFiltroCliente()
         {
             Session["ListaCliente"] = null;
-            return RedirectToAction("MontarTelaCliente");
+            if ((Int32)Session["VoltaCliente"] == 1)
+            {
+                return RedirectToAction("MontarTelaCliente");
+            }
+            else
+            {
+                return RedirectToAction("VerClientesDataGeral");
+            }
         }
 
         public JsonResult GetDadosGraficoClienteSituacao()
@@ -242,6 +251,67 @@ namespace SB_Dashboard_Presentation.Controllers
             result.Add("dias", meses);
             result.Add("valores", valor);
             return Json(result);
+        }
+
+        public JsonResult GetDadosGraficoClienteGeral()
+        {
+            List<CLIENTE> listaCP1 = (List<CLIENTE>)Session["ListaClienteDiaGeral"];
+            List<DateTime> datas = (List<DateTime>)Session["ListaClienteDatasGeral"];
+            List<CLIENTE> listaDia = new List<CLIENTE>();
+            List<String> dias = new List<String>();
+            List<Int32> valor = new List<Int32>();
+            dias.Add(" ");
+            valor.Add(0);
+
+            foreach (DateTime item in datas)
+            {
+                listaDia = listaCP1.Where(p => p.CLIE_DT_CADASTRO.Date == item).ToList();
+                Int32 contaDia = listaDia.Count();
+                dias.Add(item.ToShortDateString());
+                valor.Add(contaDia);
+            }
+
+            Hashtable result = new Hashtable();
+            result.Add("dias", dias);
+            result.Add("valores", valor);
+            return Json(result);
+        }
+
+        [HttpGet]
+        public ActionResult VerClientesDataGeral()
+        {
+            // Carrega lista completa e dados basicos
+            List<CLIENTE> listaCli = cliApp.GetAllItens();
+
+            // Registros / Dia
+            List<DateTime> datas = listaCli.Select(p => p.CLIE_DT_CADASTRO.Date).Distinct().ToList();
+            datas.Sort((x, y) => x.Date.CompareTo(y.Date));
+            List<ModeloViewModel> listaMod = new List<ModeloViewModel>();
+            foreach (DateTime item in datas)
+            {
+                Int32? conta = listaCli.Where(p => p.CLIE_DT_CADASTRO == item).ToList().Count;
+                ModeloViewModel mod1 = new ModeloViewModel();
+                mod1.DataEmissao = item;
+                mod1.Valor1 = conta.Value;
+                listaMod.Add(mod1);
+            }
+            ViewBag.ListaClienteDia = listaMod.OrderBy(p => p.DataEmissao);
+            Session["ListaClienteDatasGeral"] = datas;
+            Session["ListaClienteDiaGeral"] = listaCli;
+
+            // Monta objeto
+            Session["VoltaCliente"] = 2;
+            CLIENTE objeto = new CLIENTE();
+            objeto.CLIE_IN_ATIVO = 1;
+            return View(objeto);
+        }
+
+        [HttpGet]
+        public ActionResult VerRegistroCliente(Int32 id)
+        {
+            // Recupera Cliente
+            CLIENTE cliente = cliApp.GetItemById(id);
+            return View(cliente);
         }
 
         [HttpGet]

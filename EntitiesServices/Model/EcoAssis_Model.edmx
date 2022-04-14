@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_EcoBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_EcoBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACONDICIONAMENTO">
           <Key>
             <PropertyRef Name="ACON_CD_ID" />
@@ -137,8 +137,8 @@
           <Property Name="CLIE_IN_TIPO_PESSOA" Type="int" Nullable="false" />
           <Property Name="CLIE_NM_NOME" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="CLIE_NM_RAZAO_SOCIAL" Type="varchar" MaxLength="150" />
-          <Property Name="CLIE_NR_CPF" Type="varchar" MaxLength="15" />
-          <Property Name="CLIE_NR_CNPJ" Type="varchar" MaxLength="15" />
+          <Property Name="CLIE_NR_CPF" Type="varchar" MaxLength="20" />
+          <Property Name="CLIE_NR_CNPJ" Type="varchar" MaxLength="20" />
           <Property Name="CLIE_DT_CADASTRO" Type="date" Nullable="false" />
           <Property Name="CLIE_IN_ATIVO" Type="int" Nullable="false" />
         </EntityType>
@@ -1734,6 +1734,18 @@
           <Property Name="VEFU_NM_NOME" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="VEFU_IN_ATIVO" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_CLIENTE_ENDERECO_UF">
+          <End Role="UF" Type="Self.UF" Multiplicity="1" />
+          <End Role="CLIENTE_ENDERECO" Type="Self.CLIENTE_ENDERECO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UF">
+              <PropertyRef Name="UF_CD_ID" />
+            </Principal>
+            <Dependent Role="CLIENTE_ENDERECO">
+              <PropertyRef Name="UF_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CLIENTE_MARKETING_ATIVO_PERIODICIDADE">
           <End Role="PERIODICIDADE" Type="Self.PERIODICIDADE" Multiplicity="1" />
           <End Role="CLIENTE_MARKETING_ATIVO" Type="Self.CLIENTE_MARKETING_ATIVO" Multiplicity="*" />
@@ -4213,6 +4225,10 @@
           <EntitySet Name="USUARIO_ANEXO" EntityType="Self.USUARIO_ANEXO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIO_SUGESTAO" EntityType="Self.USUARIO_SUGESTAO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VEICULO_FUNCAO" EntityType="Self.VEICULO_FUNCAO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CLIENTE_ENDERECO_UF" Association="Self.FK_CLIENTE_ENDERECO_UF">
+            <End Role="UF" EntitySet="UF" />
+            <End Role="CLIENTE_ENDERECO" EntitySet="CLIENTE_ENDERECO" />
+          </AssociationSet>
           <AssociationSet Name="FK_CLIENTE_MARKETING_ATIVO_PERIODICIDADE" Association="Self.FK_CLIENTE_MARKETING_ATIVO_PERIODICIDADE">
             <End Role="PERIODICIDADE" EntitySet="PERIODICIDADE" />
             <End Role="CLIENTE_MARKETING_ATIVO" EntitySet="CLIENTE_MARKETING_ATIVO" />
@@ -4994,8 +5010,7 @@
             <End Role="USUARIO_SUGESTAO" EntitySet="USUARIO_SUGESTAO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_EcoBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -5153,8 +5168,8 @@
           <Property Name="CLIE_IN_TIPO_PESSOA" Type="Int32" Nullable="false" />
           <Property Name="CLIE_NM_NOME" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CLIE_NM_RAZAO_SOCIAL" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="CLIE_NR_CPF" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="CLIE_NR_CNPJ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CLIE_NR_CPF" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CLIE_NR_CNPJ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="CLIE_DT_CADASTRO" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CLIE_IN_ATIVO" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CLIENTE_ANEXO" Relationship="Self.FKCLIENTE_AN4606" FromRole="CLIENTE" ToRole="CLIENTE_ANEXO" />
@@ -5232,6 +5247,7 @@
           <NavigationProperty Name="CLIENTE" Relationship="Self.FKCLIENTE_EN510475" FromRole="CLIENTE_ENDERECO" ToRole="CLIENTE" />
           <NavigationProperty Name="TIPO_RESIDENCIA" Relationship="Self.FKCLIENTE_EN166279" FromRole="CLIENTE_ENDERECO" ToRole="TIPO_RESIDENCIA" />
           <NavigationProperty Name="ORDEM_SERVICO" Relationship="Self.FKORDEM_SERV416700" FromRole="CLIENTE_ENDERECO" ToRole="ORDEM_SERVICO" />
+          <NavigationProperty Name="UF" Relationship="DB_EcoBaseModel.FK_CLIENTE_ENDERECO_UF" FromRole="CLIENTE_ENDERECO" ToRole="UF" />
         </EntityType>
         <EntityType Name="CLIENTE_HISTORICO">
           <Key>
@@ -7026,6 +7042,7 @@
           <NavigationProperty Name="PRESTADOR_ENDERECO" Relationship="Self.FKPRESTADOR_649765" FromRole="UF" ToRole="PRESTADOR_ENDERECO" />
           <NavigationProperty Name="PRESTADOR_MOTORISTA" Relationship="Self.FKPRESTADOR_995951" FromRole="UF" ToRole="PRESTADOR_MOTORISTA" />
           <NavigationProperty Name="REGIAO_COBERTURA" Relationship="Self.FKREGIAO_COB317722" FromRole="UF" ToRole="REGIAO_COBERTURA" />
+          <NavigationProperty Name="CLIENTE_ENDERECO" Relationship="DB_EcoBaseModel.FK_CLIENTE_ENDERECO_UF" FromRole="UF" ToRole="CLIENTE_ENDERECO" />
         </EntityType>
         <EntityType Name="UNIDADE">
           <Key>
@@ -10377,7 +10394,23 @@
             <End Role="USUARIO_SUGESTAO" EntitySet="USUARIO_SUGESTAO" />
             <End Role="USUARIO_ANEXO" EntitySet="USUARIO_ANEXO" />
           </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_ENDERECO_UF" Association="DB_EcoBaseModel.FK_CLIENTE_ENDERECO_UF">
+            <End Role="UF" EntitySet="UF" />
+            <End Role="CLIENTE_ENDERECO" EntitySet="CLIENTE_ENDERECO" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_CLIENTE_ENDERECO_UF">
+          <End Type="DB_EcoBaseModel.UF" Role="UF" Multiplicity="1" />
+          <End Type="DB_EcoBaseModel.CLIENTE_ENDERECO" Role="CLIENTE_ENDERECO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UF">
+              <PropertyRef Name="UF_CD_ID" />
+            </Principal>
+            <Dependent Role="CLIENTE_ENDERECO">
+              <PropertyRef Name="UF_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

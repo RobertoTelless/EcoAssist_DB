@@ -3519,6 +3519,8 @@
     <Content Include="Views\MasterData\MontarTelaOrdemServico.cshtml" />
     <Content Include="Views\MasterData\MontarTelaAtendimento.cshtml" />
     <Content Include="Views\MasterData\Index.cshtml" />
+    <Content Include="Views\MasterData\VerClientesDataGeral.cshtml" />
+    <Content Include="Views\MasterData\VerRegistroCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,812 @@
+﻿@using Presentation.Extensions
+@model EntitiesServices.Model.CLIENTE
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="widget style1 yellow-bg">
+                <div class="row vertical-align">
+                    <div class="col-xs-3">
+                        <i class="fa fa-user fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-left">
+                        <h3 class="font-normal">@Model.CLIE_NM_NOME</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (Model.CLIE_IN_TIPO_PESSOA == 1)
+        {
+            <div class="col-lg-2">
+                <div class="widget style1 blue-bg">
+                    <div class="row vertical-align">
+                        <div class="col-xs-3">
+                            <i class="fa fa-credit-card fa-3x"></i>
+                        </div>
+                        <div class="col-xs-9 text-left">
+                            <h3 class="font-normal">Pessoa Física</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-lg-2">
+                <div class="widget style1 navy-bg">
+                    <div class="row vertical-align">
+                        <div class="col-xs-3">
+                            <i class="fa fa-credit-card fa-3x"></i>
+                        </div>
+                        <div class="col-xs-9 text-left">
+                            <h3 class="font-normal">Pessoa Jurídica</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (Model.CLIE_IN_ATIVO == 1)
+        {
+            <div class="col-lg-2">
+                <div class="widget style1 blue-bg">
+                    <div class="row vertical-align">
+                        <div class="col-xs-3">
+                            <i class="fa fa-thumbs-o-up fa-3x"></i>
+                        </div>
+                        <div class="col-xs-9 text-left">
+                            <h3 class="font-normal">Ativo</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-lg-2">
+                <div class="widget style1 red-bg">
+                    <div class="row vertical-align">
+                        <div class="col-xs-3">
+                            <i class="fa fa-thumbs-o-down fa-3x"></i>
+                        </div>
+                        <div class="col-xs-9 text-left">
+                            <h3 class="font-normal">Inativo</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Cliente - Visualização</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-group">
+                        @Html.ButtonLinkIndex(text: "Voltar", action: "MontarTelaCliente", controller: "MasterData")
+                    </div>
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-1">Dados Gerais</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-2">Anexos</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-3">Endereços</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-4">Contatos</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-5">Apólices</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-6">Histórico</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-7">Marketing Ativo</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            @*Dados Gerais*@
+                            <div id="tab-1" class="tab-pane active">
+                                <div class="panel-body">
+                                    @using (Html.BeginForm("VerRegistroCliente", "MasterData", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "pwd-container1" }))
+                                    {
+                                        <div class="row" style="width: 100%;">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class=" col-lg-3 col-md-3 col-xs-12">
+                                                        Tipo de Cliente
+                                                        @Html.TextBoxFor(m => m.TIPO_CLIENTE.TICL_NM_NOME, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-xs-12">
+                                                        Origem
+                                                        @Html.TextBoxFor(m => m.ORIGEM_CLIENTE.ORCL_NM_NOME, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    @if (Model.CLIE_IN_TIPO_PESSOA == 1)
+                                                    {
+                                                        <div class="col-lg-2 col-md-2 col-xs-12">
+                                                            CPF
+                                                            @Html.TextBoxFor(m => m.CLIE_NR_CPF, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="col-lg-2 col-md-2 col-xs-12">
+                                                            CNPJ
+                                                            @Html.TextBoxFor(m => m.CLIE_NR_CNPJ, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                        </div>
+                                                    }
+                                                    <div class=" col-lg-3 col-md-3 col-xs-12">
+                                                        Data Cadastro
+                                                        @Html.TextBoxFor(m => m.CLIE_DT_CADASTRO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-md-4 col-xs-12">
+                                                        Nome
+                                                        @Html.TextBoxFor(m => m.CLIE_NM_NOME, new { @class = "form-control", autofocus = true })
+                                                        @Html.ValidationMessageFor(m => m.CLIE_NM_NOME, "", new { @style = "color:red" })
+                                                    </div>
+                                                    @if (Model.CLIE_IN_TIPO_PESSOA == 2)
+                                                    {
+                                                        <div class="col-lg-4 col-md-4 col-xs-12">
+                                                            Razão Social
+                                                            @Html.TextBoxFor(m => m.CLIE_NM_NOME, new { @class = "form-control", autofocus = true })
+                                                            @Html.ValidationMessageFor(m => m.CLIE_NM_NOME, "", new { @style = "color:red" })
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            @*Imagens - Foto e Anexos*@
+                            <div id="tab-2" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="col-lg-12 col-md-12 col-xs-12">
+                                            <h4>Anexos</h4>
+                                            <br />
+                                            <div class="form-group">
+                                                <div class="ibox-content">
+                                                    @if (Model.CLIENTE_ANEXO.Count > 0)
+                                                    {
+                                                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                            <thead style="background-color:lightsteelblue">
+                                                                <tr>
+                                                                    <th>Título</th>
+                                                                    <th>Data</th>
+                                                                    <th>Tipo</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach (var cond in (Model.CLIENTE_ANEXO))
+                                                                {
+                                                                    <tr>
+                                                                        <td>@cond.CLAN_NM_TITULO</td>
+                                                                        <td>@cond.CLAN_DT_ANEXO.ToShortDateString()</td>
+                                                                        @if (cond.CLAN_IN_TIPO == 1)
+                                                                        {
+                                                                            <td>Imagem</td>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <td>Arquivo</td>
+                                                                        }
+                                                                    </tr>
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Endereços*@
+                            <div id="tab-3" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Endereços</h4>
+                                                <br />
+                                                @if (Model.CLIENTE_ENDERECO.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Tipo</th>
+                                                                <th>Endereço</th>
+                                                                <th>Número</th>
+                                                                <th>Complemento</th>
+                                                                <th>Bairro</th>
+                                                                <th>Cidade</th>
+                                                                <th>UF</th>
+                                                                <th>CEP</th>
+                                                                <th>Referência</th>
+                                                                <th>Assist.Técnica</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.CLIENTE_ENDERECO))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.TIPO_RESIDENCIA.TIRE_NM_NOME</td>
+                                                                    <td>@cond.CLEN_NM_ENDERECO</td>
+                                                                    <td>@cond.CLEN_NR_NUMERO</td>
+                                                                    <td>@cond.CLEN_NM_COMPLEMENTO</td>
+                                                                    <td>@cond.CLEN_NM_BAIRRO</td>
+                                                                    <td>@cond.CLEN_NM_CIDADE</td>
+                                                                    <td>@cond.UF.UF_SG_SIGLA</td>
+                                                                    <td>@cond.CLEN_NR_CEP</td>
+                                                                    <td>@cond.CLEN_TX_REFERENCIA_LOCAL</td>
+                                                                    @if (cond.CLEN_IN_ASSISNTENCIA_TECNICA == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Sim</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-success">Não</span></td>
+                                                                    }                                                   
+                                                                    @if (cond.CLEN_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Contatos*@
+                            <div id="tab-4" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Contatos</h4>
+                                                <br />
+                                                @if (Model.CLIENTE_CONTATO.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>E-Mail</th>
+                                                                <th>Tel.Residencial</th>
+                                                                <th>Tel.Comercial</th>
+                                                                <th>Celular</th>
+                                                                <th>WhatsApp</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.CLIENTE_CONTATO))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.CLCO_EM_EMAIL</td>
+                                                                    <td>@cond.CLCO_NR_TELEFONE_RESIDENCIAL</td>
+                                                                    <td>@cond.CLCO_NR_TELEFONE_COMERCIAL</td>
+                                                                    <td>@cond.CLCO_NR_CELULAR</td>
+                                                                    <td>@cond.CLCO_NR_WHATSAPP</td>
+                                                                    @if (cond.CLCO_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Apólices*@
+                            <div id="tab-5" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Apólices</h4>
+                                                <br />
+                                                @if (Model.CLIENTE_APOLICE.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Parceiro</th>
+                                                                <th>Número</th>
+                                                                <th>Início Vigência</th>
+                                                                <th>Final Vigência</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.CLIENTE_APOLICE))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.PARCEIRO.PARC_NM_NOME</td>
+                                                                    <td>@cond.CLAP_NR_APOLICE</td>
+                                                                    <td>@cond.CLAP_DT_INICIO_VIGENCIA.ToShortDateString()</td>
+                                                                    <td>@cond.CLAP_DT_FINAL_VIGENCIA.ToShortDateString()</td>
+                                                                    @if (cond.CLAP_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Histórico*@
+                            <div id="tab-6" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Histórico</h4>
+                                                <br />
+                                                @if (Model.CLIENTE_HISTORICO.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Ordem de Serviço</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.CLIENTE_HISTORICO))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.ORDEM_SERVICO.ORSE_NR_NUMERO @cond.ORDEM_SERVICO.ORSE_DT_CADASTRO.ToShortDateString()</td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Marketing Ativo*@
+                            <div id="tab-7" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Marketing Ativo</h4>
+                                                <br />
+                                                @if (Model.CLIENTE_MARKETING_ATIVO.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Peridicidade</th>
+                                                                <th>Template</th>
+                                                                <th>Tipo de Ação</th>
+                                                                <th>Data Início</th>
+                                                                <th>Data Final</th>
+                                                                <th>Ação</th>
+                                                                <th>Tempo de Aviso</th>
+                                                                <th>Data Execução</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.CLIENTE_MARKETING_ATIVO))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.PERIODICIDADE.PERI_NM_NOME</td>
+                                                                    <td>@cond.TEMP_CD_ID</td>
+                                                                    @if (cond.CLMA_IN_TIPO_ACAO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Aviso</span></td>
+                                                                    }
+                                                                    else if (cond.CLMA_IN_TIPO_ACAO == 2)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">SMS</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-primary">E-Mail</span></td>
+                                                                    }
+                                                                    <td>@cond.CLMA_DT_INICIO.ToShortDateString()</td>
+                                                                    <td>@cond.CLMA_DT_VALIDADE.ToShortDateString()</td>
+                                                                    @if (cond.CLMA_IN_ACAO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-success">A cada Login</span></td>
+                                                                    }
+                                                                    else if (cond.CLMA_IN_ACAO == 2)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Primeiro Login</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Temporizado</span></td>
+                                                                    }
+                                                                    <td>@cond.CLMA_IN_TEMPO_AVISO</td>
+                                                                    <td>@cond.CLMA_DT_EXECUTADO.ToShortDateString()</td>
+                                                                    @if (cond.CLMA_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                               
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <br />
+                    @Html.ButtonLinkIndex(text: "Voltar", action: "MontarTelaCliente", controller: "MasterData")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+    @Styles.Render("~/plugins/jasnyBootstrapStyles")
+    @Styles.Render("~/plugins/toastrStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/toastr")
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/plugins/jasnyBootstrap")
+    @Scripts.Render("~/plugins/sparkline")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+
+    @*<script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.dataTables-example').DataTable({
+                pageLength: 25,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'excel', title: 'Excel' },
+                    { extend: 'pdf', title: 'PDF' },
+
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+
+
+        });
+    </script>*@
+
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            $('.date-picker').datepicker(
+                {
+                    dateFormat: 'dd/mm/yy',
+                    dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                    dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                    dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                    monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                    monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    nextText: 'Proximo',
+                    prevText: 'Anterior',
+                    showOn: "focus"
+                }
+            )
+                .css("display", "normal")
+                .next("button").button({
+                    icons: { primary: "ui-icon-calendar" },
+                    label: "Selecione uma data",
+                    text: false
+                });
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#cpf").mask("999.999.999-99");
+            $("#cnpj").mask("99.999.999/9999-99");
+            $("#cep").mask("99999-999");
+            $("#cep1").mask("99999-999");
+            $("#dn").mask("99/99/9999");
+
+            $("#tel").mask("(99)9999-9999");
+            $("#telAdicional").mask("(99)9999-9999");
+            $("#cel").mask("(99)99999-9999");
+            
+            
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('body').addClass('light-navbar');
+
+            var id = @Model.CLIE_CD_ID;
+
+            var data = {
+                id: id
+            }
+
+            console.log(id);
+
+            $.ajax({
+                url: '../GetValorGrafico'
+                , type: 'POST'
+                , data: data
+                , success: function (r) {
+                    console.log(r);
+                    $("#sparkline1").sparkline([r.m3, r.m2, r.m1], {
+                        type: 'line',
+                        width: '100%',
+                        height: '60',
+                        lineColor: '#1ab394',
+                        fillColor: "#ffffff"
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Chama o evento após selecionar um valor
+            $('#pessoa').on('change', function () {
+                //Verifica se o valor é igual a 1 e mostra a divCnpj
+                if (this.value == '2') {
+                    $("#PF").hide();
+                    $("#PJ").show();
+                    $("#RS").show();
+                    $("#DS").show();
+                }
+                //Se o tempo for mé igual a 2 mostra a divCpf
+                else if (this.value == '1') {
+    CLIE_CD_ID               $("#PJ").hide();
+                    $("#PF").show();
+                    $("#RS").hide();
+                    $("#DS").hide();
+                }
+                else if (this.value == '4') {
+                    $("#PF").show();
+                    $("#PJ").hide();
+                    $("#RS").hide();
+                    $("#DS").hide();
+                }
+
+                //Se não for nem 1 nem 2 esconde as duas
+                else {
+                    $("#PJ").hide();
+                    $("#PF").hide();
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var i = -1;
+            var toastCount = 0;
+            var $toastlast;
+            var getMessage = function () {
+                var msg = 'Hi, welcome to Inspinia. This is example of Toastr notification box.';
+                return msg;
+            };
+
+            $('#basictoast').click(function () {
+                // Display a success toast, with a title
+                toastr.success('Edição am andamento!')
+            });
+            $('#showtoast').click(function () {
+                var shortCutFunction = $("#toastTypeGroup input:radio:checked").val();
+                var msg = $('#message').val();
+                var title = $('#title').val() || '';
+                var $showDuration = $('#showDuration');
+                var $hideDuration = $('#hideDuration');
+                var $timeOut = $('#timeOut');
+                var $extendedTimeOut = $('#extendedTimeOut');
+                var $showEasing = $('#showEasing');
+                var $hideEasing = $('#hideEasing');
+                var $showMethod = $('#showMethod');
+                var $hideMethod = $('#hideMethod');
+                var toastIndex = toastCount++;
+                toastr.options = {
+                    closeButton: $('#closeButton').prop('checked'),
+                    debug: $('#debugInfo').prop('checked'),
+                    progressBar: $('#progressBar').prop('checked'),
+                    positionClass: $('#positionGroup input:radio:checked').val() || 'toast-top-right',
+                    onclick: null
+                };
+                if ($('#addBehaviorOnToastClick').prop('checked')) {
+                    toastr.options.onclick = function () {
+                        alert('You can perform some custom action after a toast goes away');
+                    };
+                }
+                if ($showDuration.val().length) {
+                    toastr.options.showDuration = $showDuration.val();
+                }
+                if ($hideDuration.val().length) {
+                    toastr.options.hideDuration = $hideDuration.val();
+                }
+                if ($timeOut.val().length) {
+                    toastr.options.timeOut = $timeOut.val();
+                }
+                if ($extendedTimeOut.val().length) {
+                    toastr.options.extendedTimeOut = $extendedTimeOut.val();
+                }
+                if ($showEasing.val().length) {
+                    toastr.options.showEasing = $showEasing.val();
+                }
+                if ($hideEasing.val().length) {
+                    toastr.options.hideEasing = $hideEasing.val();
+                }
+                if ($showMethod.val().length) {
+                    toastr.options.showMethod = $showMethod.val();
+                }
+                if ($hideMethod.val().length) {
+                    toastr.options.hideMethod = $hideMethod.val();
+                }
+                if (!msg) {
+                    msg = getMessage();
+                }
+                $("#toastrOptions").text("Command: toastr["
+                    + shortCutFunction
+                    + "](\""
+                    + msg
+                    + (title ? "\", \"" + title : '')
+                    + "\")\n\ntoastr.options = "
+                    + JSON.stringify(toastr.options, null, 2)
+                );
+                var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+                $toastlast = $toast;
+                if ($toast.find('#okBtn').length) {
+                    $toast.delegate('#okBtn', 'click', function () {
+                        alert('you clicked me. i was toast #' + toastIndex + '. goodbye!');
+                        $toast.remove();
+                    });
+                }
+                if ($toast.find('#surpriseBtn').length) {
+                    $toast.delegate('#surpriseBtn', 'click', function () {
+                        alert('Surprise! you clicked me. i was toast #' + toastIndex + '. You could perform an action here.');
+                    });
+                }
+            });
+            function getLastToast() {
+                return $toastlast;
+            }
+            $('#clearlasttoast').click(function () {
+                toastr.clear(getLastToast());
+            });
+            $('#cleartoasts').click(function () {
+                toastr.clear();
+            });
+
+        });
+    </script>
+    <script>
+
+        function SubmitCEP() {
+
+            var usr= document.getElementById('cep1').value;
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("BuscarCEPCliente")',
+                data: "CEP:" + usr
+            });
+
+            return true;
+        }
+    </script>
+
+    <script>
+        function PesquisaCep(cep, btn, tipoEnd) {
+            data = {
+                cep: cep
+                , tipoEnd: tipoEnd
+            }
+
+            $(btn).attr("disabled", "disabled");
+
+            $.ajax({
+                url: '../PesquisaCEP_Javascript'
+                , type: 'POST'
+                , data: data
+                , success: function (r) {
+                    if (tipoEnd == 1) {
+                        $('#endereco').val(r.CLIE_NM_ENDERECO);
+                        $('#bairro').val(r.CLIE_NM_BAIRRO);
+                        $('#cidade').val(r.CLIE_NM_CIDADE);
+
+                        $('#uf option[value="' + r.UF_CD_ID + '"]').attr("selected", "selected");
+                        $('#btnBuscaCep').removeAttr("disabled");
+                    } else if (tipoEnd == 2) {
+                        $('#endEntrega').val(r.CLIE_NM_ENDERECO_ENTREGA);
+                        $('#bairroEntrega').val(r.CLIE_NM_BAIRRO_ENTREGA);
+                        $('#cidEntrega').val(r.CLIE_NM_CIDADE_ENTREGA);
+
+                        $('#ufEntrega').val(r.CLIE_SG_UF_ENTREGA);
+                        $('#btnBuscaCepEntrega').removeAttr("disabled");
+                    }
+                }
+            });
+        }
+    </script>
+
+     <script>
+        function MudaIdCliente(id) {
+            $('#idClie').val(id);
+        }
+    </script>
+
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                  alert("@ViewBag.Message");
+            };
+        </script>
+    }
+}
+

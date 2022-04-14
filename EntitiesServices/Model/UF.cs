@@ -24,6 +24,7 @@ namespace EntitiesServices.Model
             this.PRESTADOR_ENDERECO = new HashSet<PRESTADOR_ENDERECO>();
             this.PRESTADOR_MOTORISTA = new HashSet<PRESTADOR_MOTORISTA>();
             this.REGIAO_COBERTURA = new HashSet<REGIAO_COBERTURA>();
+            this.CLIENTE_ENDERECO = new HashSet<CLIENTE_ENDERECO>();
         }
     
         public int UF_CD_ID { get; set; }
@@ -44,5 +45,7 @@ namespace EntitiesServices.Model
         public virtual ICollection<PRESTADOR_MOTORISTA> PRESTADOR_MOTORISTA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<REGIAO_COBERTURA> REGIAO_COBERTURA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CLIENTE_ENDERECO> CLIENTE_ENDERECO { get; set; }
     }
 }

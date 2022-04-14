@@ -11,6 +11,7 @@ namespace ApplicationServices.Interfaces
     {
         List<CLIENTE> GetAllItens();
         List<CLIENTE> GetByNome(String nome);
+        CLIENTE GetItemById(Int32 id);
         Int32 ExecuteFilter(Int32? tipo, Int32? origem, String nome, String razao, Int32? pessoa, String cpf, String cnpj, String cidade, Int32? uf, out List<CLIENTE> objeto);
         List<TIPO_CLIENTE> GetAllTipos();
         List<ORIGEM_CLIENTE> GetAllOrigens();
