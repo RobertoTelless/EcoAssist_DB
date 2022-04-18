@@ -31,6 +31,11 @@ namespace ApplicationServices.Services
             return _baseService.GetByNome(nome);
         }
 
+        public PRESTADOR GetItemById(Int32 id)
+        {
+            return _baseService.GetItemById(id);
+        }
+
         public Int32 ExecuteFilter(String nome, String razao, String cnpj, String cidade, Int32? uf, out List<PRESTADOR > objeto)
         {
             try

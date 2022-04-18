@@ -27,6 +27,19 @@ namespace DataServices.Repositories
             return query.ToList();
         }
 
+        public TICKET_ATENDIMENTO GetItemById(Int32 id)
+        {
+            IQueryable<TICKET_ATENDIMENTO> query = Db.TICKET_ATENDIMENTO;
+            query = query.Where(p => p.ATEN_CD_ID == id);
+            query = query.Include(p => p.ATENDIMENTO_ACOMPANHAMENTO);
+            query = query.Include(p => p.ATENDIMENTO_ANEXO);
+            query = query.Include(p => p.ATENDIMENTO_STATUS);
+            query = query.Include(p => p.ORDEM_SERVICO);
+            query = query.Include(p => p.ORDEM_SERVICO_PRODUTO);
+            query = query.Include(p => p.CLIENTE);
+            return query.FirstOrDefault();
+        }
+
         public List<TICKET_ATENDIMENTO> ExecuteFilter(Int32? categoria, Int32? cliente, Int32? ordem, Int32? status, String numero, String assunto, DateTime? inicio, DateTime? prevista)
         {
             List<TICKET_ATENDIMENTO> lista = new List<TICKET_ATENDIMENTO>();

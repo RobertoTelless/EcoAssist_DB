@@ -26,6 +26,25 @@ namespace DataServices.Repositories
             return query.ToList();
         }
 
+        public PRESTADOR GetItemById(Int32 id)
+        {
+            IQueryable<PRESTADOR> query = Db.PRESTADOR;
+            query = query.Where(p => p.PRES_CD_ID == id);
+            query = query.Include(p => p.PRESTADOR_AJUDANTE);
+            query = query.Include(p => p.PRESTADOR_ANEXO);
+            query = query.Include(p => p.PRESTADOR_ANOTACOES);
+            query = query.Include(p => p.PRESTADOR_BANCO);
+            query = query.Include(p => p.PRESTADOR_CERTIFICADO);
+            query = query.Include(p => p.PRESTADOR_CONTATO);
+            query = query.Include(p => p.PRESTADOR_ENDERECO);
+            query = query.Include(p => p.PRESTADOR_MOTORISTA);
+            query = query.Include(p => p.PRESTADOR_REGIAO);
+            query = query.Include(p => p.PRESTADOR_VEICULO);
+            query = query.Include(p => p.ORDEM_SERVICO_PRESTADOR);
+            query = query.Include(p => p.DESTINADOR_ENVIO);
+            return query.FirstOrDefault();
+        }
+
         public List<PRESTADOR> ExecuteFilter(String nome, String razao, String cnpj, String cidade, Int32? uf)
         {
             List<PRESTADOR> lista = new List<PRESTADOR>();
@@ -44,6 +63,7 @@ namespace DataServices.Repositories
             }
             if (query != null)
             {
+                query = query.Where(p => p.PRES_IN_FLAG_ATIVO == 1);
                 query = query.OrderByDescending(a => a.PRES_NM_NOME);
                 lista = query.ToList<PRESTADOR>();
             }

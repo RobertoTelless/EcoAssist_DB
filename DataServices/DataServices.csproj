@@ -100,7 +100,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\UsuarioRepository.cs" />
+    <Compile Include="Repositories\TipoOrdemServicoRepository.cs" />
+    <Compile Include="Repositories\StatusOrdemServicoRepository.cs" />
+    <Compile Include="Repositories\ParceiroRepository.cs" />
+    <Compile Include="Repositories\DepartamentoRepository.cs" />
+    <Compile Include="Repositories\CategoriaAtendimentoRepository.cs" />
     <Compile Include="Repositories\OrigemClienteRepository.cs" />
+    <Compile Include="Repositories\AtendimentoStatusRepository.cs" />
     <Compile Include="Repositories\TipoClienteRepository.cs" />
     <Compile Include="Repositories\ClienteEnderecoRepository.cs" />
     <Compile Include="Repositories\AtendimentoRepository.cs" />

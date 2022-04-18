@@ -31,6 +31,11 @@ namespace ApplicationServices.Services
             return _baseService.GetByData(data);
         }
 
+        public TICKET_ATENDIMENTO GetItemById(Int32 id)
+        {
+            return _baseService.GetItemById(id);
+        }
+
         public Int32 ExecuteFilter(Int32? categoria, Int32? cliente, Int32? ordem, Int32? status, String numero, String assunto, DateTime? inicio, DateTime? prevista, out List<TICKET_ATENDIMENTO > objeto)
         {
             try
@@ -50,6 +55,36 @@ namespace ApplicationServices.Services
             {
                 throw;
             }
+        }
+
+        public List<CATEGORIA_ATENDIMENTO> GetAllCats()
+        {
+            return _baseService.GetAllCats();
+        }
+
+        public List<DEPARTAMENTO> GetAllDeptos()
+        {
+            return _baseService.GetAllDeptos();
+        }
+
+        public List<CLIENTE> GetAllClientes()
+        {
+            return _baseService.GetAllClientes();
+        }
+
+        public List<ATENDIMENTO_STATUS> GetAllStatus()
+        {
+            return _baseService.GetAllStatus();
+        }
+
+        public List<USUARIO_SUGESTAO> GetAllUsuarios()
+        {
+            return _baseService.GetAllUsuarios();
+        }
+
+        public List<ORDEM_SERVICO> GetAllOrdensServico()
+        {
+            return _baseService.GetAllOrdensServico();
         }
 
     }

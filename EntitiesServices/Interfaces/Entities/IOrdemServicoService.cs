@@ -11,6 +11,13 @@ namespace ModelServices.Interfaces.EntitiesServices
     public interface IOrdemServicoService : IServiceBase<ORDEM_SERVICO>
     {
         List<ORDEM_SERVICO> GetAllItens();
-        List<ORDEM_SERVICO> ExecuteFilter(Int32? tipo, Int32? cliente, Int32? status, String numero, DateTime? data, DateTime agendamento, Int32? prestador);
+        ORDEM_SERVICO GetItemById(Int32 id);
+        List<ORDEM_SERVICO> ExecuteFilter(Int32? tipo, Int32? cliente, Int32? status, String numero, DateTime? data, DateTime? agendamento, Int32? prestador);
+
+        List<TIPO_ORDEM_SERVICO> GetAllTipos();
+        List<PARCEIRO> GetAllParceiros();
+        List<CLIENTE> GetAllClientes();
+        List<STATUS_ORDEM_SERVICO> GetAllStatus();
+        List<USUARIO_SUGESTAO> GetAllUsuarios();
     }
 }

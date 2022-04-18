@@ -11,6 +11,7 @@ namespace ApplicationServices.Interfaces
     {
         List<PRESTADOR> GetAllItens();
         List<PRESTADOR> GetByNome(String nome);
+        PRESTADOR GetItemById(Int32 id);
         Int32 ExecuteFilter(String nome, String razao, String cnpj, String cidade, Int32? uf, out List<PRESTADOR> objeto);
     }
 }

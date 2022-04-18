@@ -116,9 +116,16 @@
     <Compile Include="Interfaces\Entities\IOrdemServicoService.cs" />
     <Compile Include="Interfaces\Entities\IServiceBase.cs" />
     <Compile Include="Interfaces\Repositories\IAtendimentoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IAtendimentoStatusRepository.cs" />
     <Compile Include="Interfaces\Repositories\IClienteEnderecoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IOrdemServicoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IOrigemClienteRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IParceiroRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IStatusOrdemServicoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICategoriaAtendimentoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IDepartamentoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IUsuarioRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITipoOrdemServicoRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITipoClienteRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPrestadorRepository.cs" />
     <Compile Include="Interfaces\Repositories\IClienteRepository.cs" />

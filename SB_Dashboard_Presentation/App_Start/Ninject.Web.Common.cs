@@ -88,6 +88,13 @@ namespace Presentation.Start
             kernel.Bind<IAtendimentoRepository>().To<AtendimentoRepository>();
             kernel.Bind<ITipoClienteRepository>().To<TipoClienteRepository>();
             kernel.Bind<IOrigemClienteRepository>().To<OrigemClienteRepository>();
+            kernel.Bind<IAtendimentoStatusRepository>().To<AtendimentoStatusRepository>();
+            kernel.Bind<ICategoriaAtendimentoRepository>().To<CategoriaAtendimentoRepository>();
+            kernel.Bind<IDepartamentoRepository>().To<DepartamentoRepository>();
+            kernel.Bind<IParceiroRepository>().To<ParceiroRepository>();
+            kernel.Bind<IStatusOrdemServicoRepository>().To<StatusOrdemServicoRepository>();
+            kernel.Bind<ITipoOrdemServicoRepository>().To<TipoOrdemServicoRepository>();
+            kernel.Bind<IUsuarioRepository>().To<UsuarioRepository>();
 
         }
     }

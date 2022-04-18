@@ -18,7 +18,26 @@ namespace DataServices.Repositories
             return query.ToList();
         }
 
-        public List<ORDEM_SERVICO> ExecuteFilter(Int32? tipo, Int32? cliente, Int32? status, String numero, DateTime? data, DateTime agendamento, Int32? prestador)
+        public ORDEM_SERVICO GetItemById(Int32 id)
+        {
+            IQueryable<ORDEM_SERVICO> query = Db.ORDEM_SERVICO;
+            query = query.Where(p => p.ORSE_CD_ID == id);
+            query = query.Include(p => p.ORDEM_SERVICO_AGENDAMENTO);
+            query = query.Include(p => p.ORDEM_SERVICO_AGENDAMENTO_ANOTACAO);
+            query = query.Include(p => p.ORDEM_SERVICO_ANEXO);
+            query = query.Include(p => p.ORDEM_SERVICO_ANOTACAO);
+            query = query.Include(p => p.ORDEM_SERVICO_HISTORICO);
+            query = query.Include(p => p.ORDEM_SERVICO_PRESTADOR);
+            query = query.Include(p => p.ORDEM_SERVICO_PRODUTO);
+            query = query.Include(p => p.ORDEM_SERVICO_PROPOSTA);
+            query = query.Include(p => p.PARCEIRO);
+            query = query.Include(p => p.CLIENTE);
+            query = query.Include(p => p.STATUS_ORDEM_SERVICO);
+            query = query.Include(p => p.TICKET_ATENDIMENTO);
+            return query.FirstOrDefault();
+        }
+
+        public List<ORDEM_SERVICO> ExecuteFilter(Int32? tipo, Int32? cliente, Int32? status, String numero, DateTime? data, DateTime? agendamento, Int32? prestador)
         {
             List<ORDEM_SERVICO> lista = new List<ORDEM_SERVICO>();
             IQueryable<ORDEM_SERVICO> query = Db.ORDEM_SERVICO;
@@ -48,6 +67,7 @@ namespace DataServices.Repositories
             }
             if (query != null)
             {
+                query = query.Where(p => p.ORSE_IN_ATIVO == 1);
                 query = query.OrderByDescending(a => a.ORSE_DT_CADASTRO);
                 lista = query.ToList<ORDEM_SERVICO>();
             }

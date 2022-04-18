@@ -26,7 +26,12 @@ namespace ApplicationServices.Services
             return _baseService.GetAllItens();
         }
 
-        public Int32 ExecuteFilter(Int32? tipo, Int32? cliente, Int32? status, String numero, DateTime? data, DateTime agendamento, Int32? prestador, out List<ORDEM_SERVICO> objeto)
+        public ORDEM_SERVICO GetItemById(Int32 id)
+        {
+            return _baseService.GetItemById(id);
+        }
+
+        public Int32 ExecuteFilter(Int32? tipo, Int32? cliente, Int32? status, String numero, DateTime? data, DateTime? agendamento, Int32? prestador, out List<ORDEM_SERVICO> objeto)
         {
             try
             {
@@ -47,6 +52,31 @@ namespace ApplicationServices.Services
             }
         }
 
+
+        public List<TIPO_ORDEM_SERVICO> GetAllTipos()
+        {
+            return _baseService.GetAllTipos();
+        }
+
+        public List<PARCEIRO> GetAllParceiros()
+        {
+            return _baseService.GetAllParceiros();
+        }
+
+        public List<CLIENTE> GetAllClientes()
+        {
+            return _baseService.GetAllClientes();
+        }
+
+        public List<STATUS_ORDEM_SERVICO> GetAllStatus()
+        {
+            return _baseService.GetAllStatus();
+        }
+
+        public List<USUARIO_SUGESTAO> GetAllUsuarios()
+        {
+            return _baseService.GetAllUsuarios();
+        }
 
     }
 }

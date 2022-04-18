@@ -31,6 +31,11 @@ namespace ModelServices.EntitiesServices
             return _baseRepository.GetAllItens();
         }
 
+        public PRESTADOR GetItemById(Int32 id)
+        {
+            return _baseRepository.GetItemById(id);
+        }
+
         public List<PRESTADOR> GetByNome(String nome)
         {
             return _baseRepository.GetByNome(nome);

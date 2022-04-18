@@ -11,6 +11,7 @@ namespace ModelServices.Interfaces.Repositories
     {
         List<PRESTADOR> GetAllItens();
         List<PRESTADOR> GetByNome(String nome);
+        PRESTADOR GetItemById(Int32 id);
         List<PRESTADOR> ExecuteFilter(String nome, String razao, String cnpj, String cidade, Int32? uf);
-}
+    }
 }

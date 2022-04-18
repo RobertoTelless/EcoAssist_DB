@@ -3521,6 +3521,12 @@
     <Content Include="Views\MasterData\Index.cshtml" />
     <Content Include="Views\MasterData\VerClientesDataGeral.cshtml" />
     <Content Include="Views\MasterData\VerRegistroCliente.cshtml" />
+    <Content Include="Views\MasterData\VerPrestadorDataGeral.cshtml" />
+    <Content Include="Views\MasterData\VerRegistroPrestador.cshtml" />
+    <Content Include="Views\MasterData\VerOrdemServicoDataGeral.cshtml" />
+    <Content Include="Views\MasterData\VerRegistroOrdemServico.cshtml" />
+    <Content Include="Views\MasterData\VerAtendimentoDataGeral.cshtml" />
+    <Content Include="Views\MasterData\VerRegistroAtendimento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

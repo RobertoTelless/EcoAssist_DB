@@ -19,11 +19,21 @@ namespace ModelServices.EntitiesServices
     public class OrdemServicoService : ServiceBase<ORDEM_SERVICO>, IOrdemServicoService
     {
         private readonly IOrdemServicoRepository _baseRepository;
+        private readonly ITipoOrdemServicoRepository _tipoRepository;
+        private readonly IParceiroRepository _parcRepository;
+        private readonly IClienteRepository _clieRepository;
+        private readonly IStatusOrdemServicoRepository _statRepository;
+        private readonly IUsuarioRepository _usuaRepository;
         protected DB_EcoBaseEntities Db = new DB_EcoBaseEntities();
 
-        public OrdemServicoService(IOrdemServicoRepository baseRepository) : base(baseRepository)
+        public OrdemServicoService(IOrdemServicoRepository baseRepository, ITipoOrdemServicoRepository tipoRepository, IParceiroRepository parcRepository, IClienteRepository clieRepository, IStatusOrdemServicoRepository statRepository, IUsuarioRepository usuaRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
+            _tipoRepository = tipoRepository;
+            _parcRepository = parcRepository;
+            _clieRepository = clieRepository;
+            _statRepository = statRepository;
+            _usuaRepository = usuaRepository;
         }
 
         public List<ORDEM_SERVICO> GetAllItens()
@@ -31,11 +41,40 @@ namespace ModelServices.EntitiesServices
             return _baseRepository.GetAllItens();
         }
 
-        public List<ORDEM_SERVICO> ExecuteFilter(Int32? tipo, Int32? cliente, Int32? status, String numero, DateTime? data, DateTime agendamento, Int32? prestador)
+        public ORDEM_SERVICO GetItemById(Int32 id)
+        {
+            return _baseRepository.GetItemById(id);
+        }
+
+        public List<ORDEM_SERVICO> ExecuteFilter(Int32? tipo, Int32? cliente, Int32? status, String numero, DateTime? data, DateTime? agendamento, Int32? prestador)
         {
             return _baseRepository.ExecuteFilter(tipo, cliente, status, numero, data, agendamento, prestador);
         }
 
+        public List<TIPO_ORDEM_SERVICO> GetAllTipos()
+        {
+            return _tipoRepository.GetAllItens();
+        }
+
+        public List<PARCEIRO> GetAllParceiros()
+        {
+            return _parcRepository.GetAllItens();
+        }
+
+        public List<CLIENTE> GetAllClientes()
+        {
+            return _clieRepository.GetAllItens();
+        }
+
+        public List<STATUS_ORDEM_SERVICO> GetAllStatus()
+        {
+            return _statRepository.GetAllItens();
+        }
+
+        public List<USUARIO_SUGESTAO> GetAllUsuarios()
+        {
+            return _usuaRepository.GetAllItens();
+        }
 
     }
 }
