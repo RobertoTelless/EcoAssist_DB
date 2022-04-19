@@ -17,6 +17,7 @@ namespace EntitiesServices.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UF()
         {
+            this.CLIENTE_ENDERECO = new HashSet<CLIENTE_ENDERECO>();
             this.DESTINADOR = new HashSet<DESTINADOR>();
             this.LEILOEIRO = new HashSet<LEILOEIRO>();
             this.PARCEIRO_ENDERECO = new HashSet<PARCEIRO_ENDERECO>();
@@ -24,13 +25,14 @@ namespace EntitiesServices.Model
             this.PRESTADOR_ENDERECO = new HashSet<PRESTADOR_ENDERECO>();
             this.PRESTADOR_MOTORISTA = new HashSet<PRESTADOR_MOTORISTA>();
             this.REGIAO_COBERTURA = new HashSet<REGIAO_COBERTURA>();
-            this.CLIENTE_ENDERECO = new HashSet<CLIENTE_ENDERECO>();
         }
     
         public int UF_CD_ID { get; set; }
         public string UF_NM_NOME { get; set; }
         public string UF_SG_SIGLA { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CLIENTE_ENDERECO> CLIENTE_ENDERECO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DESTINADOR> DESTINADOR { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -45,7 +47,5 @@ namespace EntitiesServices.Model
         public virtual ICollection<PRESTADOR_MOTORISTA> PRESTADOR_MOTORISTA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<REGIAO_COBERTURA> REGIAO_COBERTURA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CLIENTE_ENDERECO> CLIENTE_ENDERECO { get; set; }
     }
 }

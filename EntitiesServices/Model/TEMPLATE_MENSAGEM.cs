@@ -26,6 +26,7 @@ namespace EntitiesServices.Model
         public byte[] TEMP_TX_MENSAGEM { get; set; }
         public string TEMP_AQ_MENSAGEM { get; set; }
         public int TEMP_IN_ATIVO { get; set; }
+        public string TEMP_TX_MENSAGEM_TEXTO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CLIENTE_MARKETING_ATIVO> CLIENTE_MARKETING_ATIVO { get; set; }

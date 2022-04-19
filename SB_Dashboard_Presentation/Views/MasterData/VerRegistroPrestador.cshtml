@@ -1,7 +1,1071 @@
-﻿
+﻿@using Presentation.Extensions
+@model EntitiesServices.Model.PRESTADOR
+@using CrossCutting
 @{
-    ViewBag.Title = "VerRegistroPrestador";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="widget style1 yellow-bg">
+                <div class="row vertical-align">
+                    <div class="col-xs-3">
+                        <i class="fa fa-user fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-left">
+                        <h3 class="font-normal">@Model.PRES_NM_NOME</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<h2>VerRegistroPrestador</h2>
+        @if (Model.PRES_IN_FLAG_ATIVO == 1)
+        {
+            <div class="col-lg-2">
+                <div class="widget style1 blue-bg">
+                    <div class="row vertical-align">
+                        <div class="col-xs-3">
+                            <i class="fa fa-thumbs-o-up fa-3x"></i>
+                        </div>
+                        <div class="col-xs-9 text-left">
+                            <h3 class="font-normal">Ativo</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-lg-2">
+                <div class="widget style1 red-bg">
+                    <div class="row vertical-align">
+                        <div class="col-xs-3">
+                            <i class="fa fa-thumbs-o-down fa-3x"></i>
+                        </div>
+                        <div class="col-xs-9 text-left">
+                            <h3 class="font-normal">Inativo</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Prestador - Visualização</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-group">
+                        @Html.ButtonLinkIndex(text: "Voltar", action: "MontarTelaPrestador", controller: "MasterData")
+                    </div>
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-1">Dados Gerais</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-2">Anexos</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-3">Endereços</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-4">Contatos</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-5">Motoristas</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-6">Ajudantes</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-7">Veículos</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-8">Anotações</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-9">Bancos</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-10">Certificados</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-11">Regiões</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            @*Dados Gerais*@
+                            <div id="tab-1" class="tab-pane active">
+                                <div class="panel-body">
+                                    @using (Html.BeginForm("VerRegistroPrestador", "MasterData", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "pwd-container1" }))
+                                    {
+                                        <div class="row" style="width: 100%;">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        CNPJ
+                                                        @Html.TextBoxFor(m => m.PRES_NR_CNPJ, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class=" col-lg-2 col-md-2 col-xs-12">
+                                                        Data Cadastro
+                                                        @Html.TextBoxFor(m => m.PRES_DT_DATA_CADASTRO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4 col-xs-12">
+                                                        Nome
+                                                        @Html.TextBoxFor(m => m.PRES_NM_NOME, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4 col-xs-12">
+                                                        Razão Social
+                                                        @Html.TextBoxFor(m => m.PRES_NM_RAZAO_SOCIAL, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-xs-12">
+                                                        Nome Responsável
+                                                        @Html.TextBoxFor(m => m.PRES_NM_RESPONSAVEL, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class=" col-lg-3 col-md-3 col-xs-12">
+                                                        Cargo
+                                                        @Html.TextBoxFor(m => m.PRES_DS_CARGO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-xs-12">
+                                                        E-Mail Principal
+                                                        @Html.TextBoxFor(m => m.PRES_EM_EMAIL_PRINCIPAL, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Data Início
+                                                        @Html.TextBoxFor(m => m.PRES_DT_INICIO_ATIVIDADE, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Tel.Principal
+                                                        @Html.TextBoxFor(m => m.PRES_NR_TELEFONE_PRINCIPAL, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Cel.Principal
+                                                        @Html.TextBoxFor(m => m.PRES_NR_CELULAR_PRINCIPAL, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        WhatsApp
+                                                        @Html.TextBoxFor(m => m.PRES_NR_WHATSAPP_PRINCIPAL, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Website
+                                                        @Html.TextBoxFor(m => m.PRES_NM_WEBSITE, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Usuário Prime
+                                                        @Html.TextBoxFor(m => m.PRES_NR_USUARIO_PRIME, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Func.CLT
+                                                        @Html.TextBoxFor(m => m.PRES_NR_FUNCIONARIOS_CLT, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Func.Terceiros
+                                                        @Html.TextBoxFor(m => m.PRES_NR_FUNCIONARIOS_TERCEIROS, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Caminhões Próprios
+                                                        @Html.TextBoxFor(m => m.PRES_NR_PROPRIA_CAMINHAO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Utilit.Próprios
+                                                        @Html.TextBoxFor(m => m.PRES_NR_PROPRIA_UTILITARIO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Motos Próprias
+                                                        @Html.TextBoxFor(m => m.PRES_NR_PROPRIA_MOTO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Seguro Próprio
+                                                        @Html.TextBoxFor(m => m.PRES_IN_PROPRIA_SEGURO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Caminhões Terceiros
+                                                        @Html.TextBoxFor(m => m.PRES_NR_TERCEIRO_CAMINHAO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Utilit.Terceiros
+                                                        @Html.TextBoxFor(m => m.PRES_NR_TERCEIRO_UTILITARIO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Motos Terceiros
+                                                        @Html.TextBoxFor(m => m.PRES_NR_TERCEIRO_MOTO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Seguro Terceiro
+                                                        @Html.TextBoxFor(m => m.PRES_IN_TERCEIRO_SEGURO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Uniforme Próprio
+                                                        @Html.TextBoxFor(m => m.PRES_IN_UNIFORME_PROPRIO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Uniforme EcoAssist
+                                                        @Html.TextBoxFor(m => m.PRES_IN_UNIFORME_ECOASSIST, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Rastreamento
+                                                        @Html.TextBoxFor(m => m.PRES_IN_RASTREAMENTO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            @*Imagens - Foto e Anexos*@
+                            <div id="tab-2" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="col-lg-12 col-md-12 col-xs-12">
+                                            <h4>Anexos</h4>
+                                            <br />
+                                            <div class="form-group">
+                                                <div class="ibox-content">
+                                                    @if (Model.PRESTADOR_ANEXO.Count > 0)
+                                                    {
+                                                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                            <thead style="background-color:lightsteelblue">
+                                                                <tr>
+                                                                    <th>Título</th>
+                                                                    <th>Data</th>
+                                                                    <th>Tipo</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach (var cond in (Model.PRESTADOR_ANEXO))
+                                                                {
+                                                                    <tr>
+                                                                        <td>@cond.PRAN_NM_TITULO</td>
+                                                                        <td>@cond.PRAN_DT_ANEXO.ToShortDateString()</td>
+                                                                        @if (cond.PRAN_IN_TIPO == 1)
+                                                                        {
+                                                                            <td>Imagem</td>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <td>Arquivo</td>
+                                                                        }
+                                                                    </tr>
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Endereços*@
+                            <div id="tab-3" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Endereços</h4>
+                                                <br />
+                                                @if (Model.PRESTADOR_ENDERECO.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Endereço</th>
+                                                                <th>Número</th>
+                                                                <th>Complemento</th>
+                                                                <th>Bairro</th>
+                                                                <th>Cidade</th>
+                                                                <th>UF</th>
+                                                                <th>CEP</th>
+                                                                <th>Estoque?</th>
+                                                                <th>Nome Estoque</th>
+                                                                <th>Referência</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.PRESTADOR_ENDERECO))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.PREN_NM_ENDERECO</td>
+                                                                    <td>@cond.PRE_NR_NUMERO</td>
+                                                                    <td>@cond.PREN_NM_COMPLEMENTO</td>
+                                                                    <td>@cond.PREN_NM_BAIRRO</td>
+                                                                    <td>@cond.PREN_NM_CIDADE</td>
+                                                                    <td>@cond.UF.UF_SG_SIGLA</td>
+                                                                    <td>@cond.PREN_NR_CEP</td>
+                                                                    @if (cond.PREN_IN_FLAG_ESTOQUE == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Sim</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-success">Não</span></td>
+                                                                    }                                                   
+                                                                    <td>@cond.PREN_NM_NOME_ESTOQUE</td>
+                                                                    <td>@cond.PREN_DS_REFERENCIA_LOCAL</td>
+                                                                    @if (cond.PREN_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Contatos*@
+                            <div id="tab-4" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Contatos</h4>
+                                                <br />
+                                                @if (Model.PRESTADOR_CONTATO.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Nome</th>
+                                                                <th>Cargo</th>
+                                                                <th>E-Mail</th>
+                                                                <th>Telefone</th>
+                                                                <th>Celular</th>
+                                                                <th>WhatsApp</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.PRESTADOR_CONTATO))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.PRCO_NM_NOME</td>
+                                                                    <td>@cond.PRCO_NM_CARGO</td>
+                                                                    <td>@cond.PRCO_EM_EMAIL</td>
+                                                                    <td>@cond.PRCO_NR_TELEFONE</td>
+                                                                    <td>@cond.PRCO_NR_CELULAR</td>
+                                                                    <td>@cond.PRCO_NR_WHATSAPP</td>
+                                                                    @if (cond.PRCO_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Motoristas*@
+                            <div id="tab-5" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Motoristas</h4>
+                                                <br />
+                                                @if (Model.PRESTADOR_MOTORISTA.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Nome</th>
+                                                                <th>RG</th>
+                                                                <th>Órgão</th>
+                                                                <th>Emissão</th>
+                                                                <th>UF</th>
+                                                                <th>CPF</th>
+                                                                <th>CNH</th>
+                                                                <th>Categoria</th>
+                                                                <th>Validade</th>
+                                                                <th>Data Cadastro</th>
+                                                                <th>Anotações</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.PRESTADOR_MOTORISTA))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.PRMO_NM_NOME</td>
+                                                                    <td>@cond.PRMO_NR_RG</td>
+                                                                    <td>@cond.PRMO_NM_ORGAO_RG</td>
+                                                                    <td>@cond.PRMO_DT_EMISSAO_RG.Value.ToShortDateString()</td>
+                                                                    <td>@cond.UF.UF_SG_SIGLA</td>
+                                                                    <td>@cond.PRMO_NR_CPF</td>
+                                                                    <td>@cond.PRMO_NR_CNH</td>
+                                                                    <td>@cond.CNH_CATEGORIA.CNCA_NM_NOME</td>
+                                                                    <td>@cond.PRMO_DT_CNH_VALIDADE.Value.ToShortDateString()</td>
+                                                                    <td>@cond.PRMO_DT_CADASTRO.ToShortDateString()</td>
+                                                                    <td>@cond.PRESTADOR_MOTORISTA_ANOTACOES.Count</td>
+                                                                    @if (cond.PRMO_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Ajudantes*@
+                            <div id="tab-6" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Ajudantes</h4>
+                                                <br />
+                                                @if (Model.PRESTADOR_AJUDANTE.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Nome</th>
+                                                                <th>RG</th>
+                                                                <th>Órgão</th>
+                                                                <th>Emissão</th>
+                                                                <th>UF</th>
+                                                                <th>CPF</th>
+                                                                <th>Data Cadastro</th>
+                                                                <th>Anotações</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.PRESTADOR_AJUDANTE))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.PRAJ_NM_NOME</td>
+                                                                    <td>@cond.PRAJ_NR_RG</td>
+                                                                    <td>@cond.PRAJ_NM_RG_ORGAO_EMISSOR</td>
+                                                                    <td>@cond.PRAJ_DT_RG_EMISSAO.Value.ToShortDateString()</td>
+                                                                    <td>@cond.UF.UF_SG_SIGLA</td>
+                                                                    <td>@cond.PRAJ_NR_CPF</td>
+                                                                    <td>@cond.PRAJ_DT_CADASTRO.ToShortDateString()</td>
+                                                                    <td>@cond.PRESTADOR_AJUDANTE_ANOTACOES.Count</td>
+                                                                    @if (cond.PRAJ_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Veículos*@
+                            <div id="tab-7" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Veículos</h4>
+                                                <br />
+                                                @if (Model.PRESTADOR_VEICULO.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Tipo</th>
+                                                                <th>Modelo</th>
+                                                                <th>Marca</th>
+                                                                <th>Placa</th>
+                                                                <th>Capacidade</th>
+                                                                <th>Anotações</th>
+                                                                <th>Funções</th>
+                                                                <th>Certificados</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.PRESTADOR_VEICULO))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.TIPO_VEICULO.TIVE_NM_NOME</td>
+                                                                    <td>@cond.MODELO_VEICULO.MOVE_NM_NOME</td>
+                                                                    <td>@cond.MARCA_VEICULO.MAVE_NM_NOME</td>
+                                                                    <td>@cond.PRVE_NR_PLACA</td>
+                                                                    <td>@cond.PRVE_NR_CAPACIDADE</td>
+                                                                    <td>@cond.PRESTADOR_VEICULO_ANOTACOES.Count</td>
+                                                                    <td>@cond.PRESTADOR_VEICULO_FUNCAO.Count</td>
+                                                                    <td>@cond.PRESTADOR_VEICULO_CERTIFICADO.Count</td>
+                                                                    @if (cond.PRVE_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            @*Bancos*@
+                            <div id="tab-9" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Bancos</h4>
+                                                <br />
+                                                @if (Model.PRESTADOR_BANCO.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Banco</th>
+                                                                <th>Código</th>
+                                                                <th>Tipo Conta</th>
+                                                                <th>Agência</th>
+                                                                <th>Conta</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.PRESTADOR_BANCO))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.BANCO.BANC_NM_NOME</td>
+                                                                    <td>@cond.BANCO.BANC_NR_CODIGO</td>
+                                                                    <td>@cond.TIPO_CONTA.TICO_NM_NOME</td>
+                                                                    <td>@cond.PRBA_NR_AGENCIA</td>
+                                                                    <td>@cond.PRBA_NR_CONTA</td>
+                                                                    @if (cond.PRBA_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            @*Certificados*@
+                            <div id="tab-10" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Certificados</h4>
+                                                <br />
+                                                @if (Model.PRESTADOR_CERTIFICADO.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Tipo</th>
+                                                                <th>Data Emissão</th>
+                                                                <th>Data Validade</th>
+                                                                <th>Arquivo</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.PRESTADOR_CERTIFICADO))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.TIPO_CERTIFICADO.TICE_NM_NOME</td>
+                                                                    <td>@cond.PRDE_DT_EMISSAO.ToShortDateString()</td>
+                                                                    <td>@cond.PRCE_DT_VALIDADE.ToShortDateString()</td>
+                                                                    <td>@cond.PRCE_AQ_ARQUIVO</td>
+                                                                    @if (cond.PRCE_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            @*Regiões*@
+                            <div id="tab-11" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Regiões</h4>
+                                                <br />
+                                                @if (Model.PRESTADOR_REGIAO.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Região</th>
+                                                                <th>Cobertura</th>
+                                                                <th>Preço Base</th>
+                                                                <th>Preço Máximo</th>
+                                                                <th>Preço Mínimo</th>
+                                                                <th>Acréscimo Hora</th>
+                                                                <th>Dias Carência</th>
+                                                                <th>Prioridade</th>
+                                                                <th>SLA</th>
+                                                                <th>2a feira</th>
+                                                                <th>3a feira</th>
+                                                                <th>4a feira</th>
+                                                                <th>5a feira</th>
+                                                                <th>6a feira</th>
+                                                                <th>Sábado</th>
+                                                                <th>Domingo</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.PRESTADOR_REGIAO))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.REGIAO.REGI_NM_NOME</td>
+                                                                    <td>@cond.REGIAO_COBERTURA.RECO_NM_CIDADE</td>
+                                                                    <td>@CrossCutting.Formatters.DecimalFormatter(cond.PRRE_VL_PRECO_BASE)</td>
+                                                                    <td>@CrossCutting.Formatters.DecimalFormatter(cond.PRRE_VL_PRECO_MAXIMO.Value)</td>
+                                                                    <td>@CrossCutting.Formatters.DecimalFormatter(cond.PRRE_VL_PRECO_MINIMO.Value)</td>
+                                                                    <td>@CrossCutting.Formatters.DecimalFormatter(cond.PRRE_ACRESCIMO_HORA.Value)</td>
+                                                                    <td>@cond.PRR_NR_DIAS_CARENCIA</td>
+                                                                    <td>@cond.PRRE_IN_PRIORIDADE</td>
+                                                                    <td>@cond.PRRE_IN_SLA</td>
+                                                                    <td>@cond.PRRE_IN_SEGUNDA</td>
+                                                                    <td>@cond.PRRE_IN_TERCA</td>
+                                                                    <td>@cond.PRRE_IN_QUARTA</td>
+                                                                    <td>@cond.PRRE_IN_QUINTA</td>
+                                                                    <td>@cond.PRRE_IN_SEXTA</td>
+                                                                    <td>@cond.PRRE_IN_SABADO</td>
+                                                                    <td>@cond.PRRE_IN_DOMINGO</td>
+                                                                    @if (cond.PRRE_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            @*Anotações*@
+                            <div id="tab-8" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 1px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; height: 800px" >
+                                        <div class="ibox-title"  style="color: black">
+                                            <h5>Anotações</h5>
+                                        </div>
+                                        <div class="ibox-content" style="color: black; overflow: auto">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    @if (Model.PRESTADOR_ANOTACOES.Count > 0)
+                                                    {
+                                                        foreach (var item in (Model.PRESTADOR_ANOTACOES))
+                                                        {
+                                                            <div class="social-feed-box">
+                                                                <div class="social-avatar">
+                                                                    <a href="" class="pull-left">
+                                                                        <img src="@Url.Content(item.USUARIO_SUGESTAO.USUA_AQ_FOTO)" style="width: auto; height: auto; max-height: 110px; max-width: 90px;">
+                                                                    </a>
+                                                                    <div class="media-body">
+                                                                        <a href="#">
+                                                                            @item.USUARIO_SUGESTAO.USUA_NM_NOME
+                                                                        </a>
+                                                                        <small class="text-muted">@item.PRAN_DT_ANOTACAO.ToString("dd/MM/yyyy HH:mm")</small>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="social-body">
+                                                                    <p>
+                                                                        @item.PRAN_TX_ANOTACAO
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                   
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <br />
+                    @Html.ButtonLinkIndex(text: "Voltar", action: "MontarTelaPrestador", controller: "MasterData")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+    @Styles.Render("~/plugins/jasnyBootstrapStyles")
+    @Styles.Render("~/plugins/toastrStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/toastr")
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/plugins/jasnyBootstrap")
+    @Scripts.Render("~/plugins/sparkline")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+
+    @*<script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.dataTables-example').DataTable({
+                pageLength: 25,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'excel', title: 'Excel' },
+                    { extend: 'pdf', title: 'PDF' },
+
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+
+
+        });
+    </script>*@
+
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            $('.date-picker').datepicker(
+                {
+                    dateFormat: 'dd/mm/yy',
+                    dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                    dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                    dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                    monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                    monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    nextText: 'Proximo',
+                    prevText: 'Anterior',
+                    showOn: "focus"
+                }
+            )
+                .css("display", "normal")
+                .next("button").button({
+                    icons: { primary: "ui-icon-calendar" },
+                    label: "Selecione uma data",
+                    text: false
+                });
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#cpf").mask("999.999.999-99");
+            $("#cnpj").mask("99.999.999/9999-99");
+            $("#cep").mask("99999-999");
+            $("#cep1").mask("99999-999");
+            $("#dn").mask("99/99/9999");
+
+            $("#tel").mask("(99)9999-9999");
+            $("#telAdicional").mask("(99)9999-9999");
+            $("#cel").mask("(99)99999-9999");
+            
+            
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Chama o evento após selecionar um valor
+            $('#pessoa').on('change', function () {
+                //Verifica se o valor é igual a 1 e mostra a divCnpj
+                if (this.value == '2') {
+                    $("#PF").hide();
+                    $("#PJ").show();
+                    $("#RS").show();
+                    $("#DS").show();
+                }
+                //Se o tempo for mé igual a 2 mostra a divCpf
+                else if (this.value == '1') {
+    CLIE_CD_ID               $("#PJ").hide();
+                    $("#PF").show();
+                    $("#RS").hide();
+                    $("#DS").hide();
+                }
+                else if (this.value == '4') {
+                    $("#PF").show();
+                    $("#PJ").hide();
+                    $("#RS").hide();
+                    $("#DS").hide();
+                }
+
+                //Se não for nem 1 nem 2 esconde as duas
+                else {
+                    $("#PJ").hide();
+                    $("#PF").hide();
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var i = -1;
+            var toastCount = 0;
+            var $toastlast;
+            var getMessage = function () {
+                var msg = 'Hi, welcome to Inspinia. This is example of Toastr notification box.';
+                return msg;
+            };
+
+            $('#basictoast').click(function () {
+                // Display a success toast, with a title
+                toastr.success('Edição am andamento!')
+            });
+            $('#showtoast').click(function () {
+                var shortCutFunction = $("#toastTypeGroup input:radio:checked").val();
+                var msg = $('#message').val();
+                var title = $('#title').val() || '';
+                var $showDuration = $('#showDuration');
+                var $hideDuration = $('#hideDuration');
+                var $timeOut = $('#timeOut');
+                var $extendedTimeOut = $('#extendedTimeOut');
+                var $showEasing = $('#showEasing');
+                var $hideEasing = $('#hideEasing');
+                var $showMethod = $('#showMethod');
+                var $hideMethod = $('#hideMethod');
+                var toastIndex = toastCount++;
+                toastr.options = {
+                    closeButton: $('#closeButton').prop('checked'),
+                    debug: $('#debugInfo').prop('checked'),
+                    progressBar: $('#progressBar').prop('checked'),
+                    positionClass: $('#positionGroup input:radio:checked').val() || 'toast-top-right',
+                    onclick: null
+                };
+                if ($('#addBehaviorOnToastClick').prop('checked')) {
+                    toastr.options.onclick = function () {
+                        alert('You can perform some custom action after a toast goes away');
+                    };
+                }
+                if ($showDuration.val().length) {
+                    toastr.options.showDuration = $showDuration.val();
+                }
+                if ($hideDuration.val().length) {
+                    toastr.options.hideDuration = $hideDuration.val();
+                }
+                if ($timeOut.val().length) {
+                    toastr.options.timeOut = $timeOut.val();
+                }
+                if ($extendedTimeOut.val().length) {
+                    toastr.options.extendedTimeOut = $extendedTimeOut.val();
+                }
+                if ($showEasing.val().length) {
+                    toastr.options.showEasing = $showEasing.val();
+                }
+                if ($hideEasing.val().length) {
+                    toastr.options.hideEasing = $hideEasing.val();
+                }
+                if ($showMethod.val().length) {
+                    toastr.options.showMethod = $showMethod.val();
+                }
+                if ($hideMethod.val().length) {
+                    toastr.options.hideMethod = $hideMethod.val();
+                }
+                if (!msg) {
+                    msg = getMessage();
+                }
+                $("#toastrOptions").text("Command: toastr["
+                    + shortCutFunction
+                    + "](\""
+                    + msg
+                    + (title ? "\", \"" + title : '')
+                    + "\")\n\ntoastr.options = "
+                    + JSON.stringify(toastr.options, null, 2)
+                );
+                var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+                $toastlast = $toast;
+                if ($toast.find('#okBtn').length) {
+                    $toast.delegate('#okBtn', 'click', function () {
+                        alert('you clicked me. i was toast #' + toastIndex + '. goodbye!');
+                        $toast.remove();
+                    });
+                }
+                if ($toast.find('#surpriseBtn').length) {
+                    $toast.delegate('#surpriseBtn', 'click', function () {
+                        alert('Surprise! you clicked me. i was toast #' + toastIndex + '. You could perform an action here.');
+                    });
+                }
+            });
+            function getLastToast() {
+                return $toastlast;
+            }
+            $('#clearlasttoast').click(function () {
+                toastr.clear(getLastToast());
+            });
+            $('#cleartoasts').click(function () {
+                toastr.clear();
+            });
+
+        });
+    </script>
+    <script>
+
+        function SubmitCEP() {
+
+            var usr= document.getElementById('cep1').value;
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("BuscarCEPCliente")',
+                data: "CEP:" + usr
+            });
+
+            return true;
+        }
+    </script>
+
+    <script>
+        function PesquisaCep(cep, btn, tipoEnd) {
+            data = {
+                cep: cep
+                , tipoEnd: tipoEnd
+            }
+
+            $(btn).attr("disabled", "disabled");
+
+            $.ajax({
+                url: '../PesquisaCEP_Javascript'
+                , type: 'POST'
+                , data: data
+                , success: function (r) {
+                    if (tipoEnd == 1) {
+                        $('#endereco').val(r.CLIE_NM_ENDERECO);
+                        $('#bairro').val(r.CLIE_NM_BAIRRO);
+                        $('#cidade').val(r.CLIE_NM_CIDADE);
+
+                        $('#uf option[value="' + r.UF_CD_ID + '"]').attr("selected", "selected");
+                        $('#btnBuscaCep').removeAttr("disabled");
+                    } else if (tipoEnd == 2) {
+                        $('#endEntrega').val(r.CLIE_NM_ENDERECO_ENTREGA);
+                        $('#bairroEntrega').val(r.CLIE_NM_BAIRRO_ENTREGA);
+                        $('#cidEntrega').val(r.CLIE_NM_CIDADE_ENTREGA);
+
+                        $('#ufEntrega').val(r.CLIE_SG_UF_ENTREGA);
+                        $('#btnBuscaCepEntrega').removeAttr("disabled");
+                    }
+                }
+            });
+        }
+    </script>
+
+     <script>
+        function MudaIdCliente(id) {
+            $('#idClie').val(id);
+        }
+    </script>
+
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                  alert("@ViewBag.Message");
+            };
+        </script>
+    }
+}
 

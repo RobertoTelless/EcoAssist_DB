@@ -385,6 +385,7 @@ namespace SB_Dashboard_Presentation.Controllers
             }
 
             // Monta objeto de filtro
+            ViewBag.Listas = listaPres;
             Session["VoltaPrestador"] = 1;
             PRESTADOR objeto = new PRESTADOR();
             objeto.PRES_IN_FLAG_ATIVO = 1;
@@ -560,7 +561,7 @@ namespace SB_Dashboard_Presentation.Controllers
         public ActionResult VerRegistroPrestador(Int32 id)
         {
             // Recupera Cliente
-            CLIENTE cliente = cliApp.GetItemById(id);
+            PRESTADOR cliente = preApp.GetItemById(id);
             return View(cliente);
         }
 
@@ -623,8 +624,12 @@ namespace SB_Dashboard_Presentation.Controllers
                 listaOS = (List<ORDEM_SERVICO>)Session["ListaOSCompleta"];
                 Session["ListaOS"] = listaOS;
             }
+            ViewBag.Clientes = new SelectList(cliApp.GetAllItens(), "CLIE_CD_ID", "CLIE_NM_NOME");
+            ViewBag.Tipos = new SelectList(OSApp.GetAllTipos(), "TIOS_CD_ID", "TIOS_NM_NOME");
+            ViewBag.Status = new SelectList(OSApp.GetAllStatus(), "STOS_CD_ID", "STOS_NM_NOME");
 
             // Monta objeto de filtro
+            ViewBag.Listas = listaOS;
             Session["VoltaOS"] = 1;
             ORDEM_SERVICO objeto = new ORDEM_SERVICO();
             objeto.ORSE_IN_ATIVO = 1;
@@ -865,6 +870,13 @@ namespace SB_Dashboard_Presentation.Controllers
             }
 
             // Monta objeto de filtro
+            ViewBag.Clientes = new SelectList(cliApp.GetAllItens(), "CLIE_CD_ID", "CLIE_NM_NOME");
+            ViewBag.OS = new SelectList(OSApp.GetAllItens(), "ORSE_CD_ID", "ORSE_NR_NUMERO");
+            ViewBag.Cats = new SelectList(ateApp.GetAllCats(), "CAAT_CD_ID", "CAAT_NM_NOME");
+            ViewBag.Status = new SelectList(ateApp.GetAllStatus(), "ATST_CD_ID", "ATST_NM_NOME");
+            ViewBag.Clientes = new SelectList(cliApp.GetAllItens(), "CLIE_CD_ID", "CLIE_NM_NOME");
+
+            ViewBag.Listas = listaAT;
             Session["VoltaAT"] = 1;
             TICKET_ATENDIMENTO objeto = new TICKET_ATENDIMENTO();
             objeto.ATEN_IN_ATIVO = 1;
@@ -970,7 +982,7 @@ namespace SB_Dashboard_Presentation.Controllers
                 if (ind != ind1)
                 {
                     ind = ind1;
-                    listaMes = listaCP1.Where(m => m.ATEN_DT_INICIO.Month == item.Month & m.ATEN_CD_ID.Year == item.Year).ToList();
+                    listaMes = listaCP1.Where(m => m.ATEN_DT_INICIO.Month == item.Month & m.ATEN_DT_INICIO.Year == item.Year).ToList();
                     Int32 contaMes = listaMes.Count();
                     meses.Add(item.Month.ToString() + "/" + item.Year.ToString());
                     valor.Add(contaMes);

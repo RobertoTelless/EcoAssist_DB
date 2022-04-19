@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DB_EcoBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DB_EcoBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACONDICIONAMENTO">
           <Key>
             <PropertyRef Name="ACON_CD_ID" />
@@ -196,6 +196,7 @@
           <Property Name="CLEN_TX_REFERENCIA_LOCAL" Type="image" />
           <Property Name="CLEN_IN_ASSISNTENCIA_TECNICA" Type="int" Nullable="false" />
           <Property Name="CLEN_IN_ATIVO" Type="int" Nullable="false" />
+          <Property Name="CLEN_TX_REFERENCIA_LOCAL_TEXT" Type="text" />
         </EntityType>
         <EntityType Name="CLIENTE_HISTORICO">
           <Key>
@@ -1176,7 +1177,7 @@
           <Property Name="PRAJ_CD_ID" Type="int" Nullable="false" />
           <Property Name="PRAA_DT_ANOTACAO" Type="date" Nullable="false" />
           <Property Name="USUA_CD_ID" Type="int" Nullable="false" />
-          <Property Name="PRAA_TX_ANOTACAO" Type="image" Nullable="false" />
+          <Property Name="PRAA_TX_ANOTACAO" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="PRESTADOR_ANEXO">
           <Key>
@@ -1198,7 +1199,7 @@
           <Property Name="PRES_CD_ID" Type="int" Nullable="false" />
           <Property Name="PRAN_DT_ANOTACAO" Type="date" Nullable="false" />
           <Property Name="USUA_CD_ID" Type="int" Nullable="false" />
-          <Property Name="PRAN_TX_ANOTACAO" Type="image" Nullable="false" />
+          <Property Name="PRAN_TX_ANOTACAO" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="PRESTADOR_BANCO">
           <Key>
@@ -1251,10 +1252,10 @@
           <Property Name="PREN_NM_CIDADE" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PREN_NR_CEP" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="UF_CD_ID" Type="int" Nullable="false" />
-          <Property Name="PREN_DS_REFERENCIA_LOCAL" Type="image" />
           <Property Name="PREN_IN_FLAG_ESTOQUE" Type="int" Nullable="false" />
           <Property Name="PREN_NM_NOME_ESTOQUE" Type="varchar" MaxLength="50" />
           <Property Name="PREN_IN_ATIVO" Type="int" Nullable="false" />
+          <Property Name="PREN_DS_REFERENCIA_LOCAL" Type="text" />
         </EntityType>
         <EntityType Name="PRESTADOR_ENDERECO_ESTOQUE">
           <Key>
@@ -1440,8 +1441,8 @@
           </Key>
           <Property Name="REGI_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="REGI_NM_NOME" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="REGI_DS_RESTRICOES" Type="image" />
           <Property Name="REGI_IN_ATIVO" Type="int" Nullable="false" />
+          <Property Name="REGI_DS_RESTRICOES" Type="text" />
         </EntityType>
         <EntityType Name="REGIAO_COBERTURA">
           <Key>
@@ -1515,6 +1516,7 @@
           <Property Name="TEMP_TX_MENSAGEM" Type="image" />
           <Property Name="TEMP_AQ_MENSAGEM" Type="varchar" MaxLength="250" />
           <Property Name="TEMP_IN_ATIVO" Type="int" Nullable="false" />
+          <Property Name="TEMP_TX_MENSAGEM_TEXTO" Type="text" />
         </EntityType>
         <EntityType Name="TICKET_ATENDIMENTO">
           <Key>
@@ -1704,7 +1706,7 @@
           <Property Name="USUA_NM_LOGIN" Type="varchar" MaxLength="6" Nullable="false" />
           <Property Name="USUA_EM_EMAIL" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="USUA_NR_MATRICULA" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="USUA_NR_CELULAR" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="USUA_NR_CELULAR" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="USUA_NM_SENHA" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="USUA_NM_SENHA_CONFIRMA" Type="varchar" MaxLength="8" />
           <Property Name="USUA_NM_NOVA_SENHA" Type="varchar" MaxLength="8" />
@@ -5010,7 +5012,8 @@
             <End Role="USUARIO_SUGESTAO" EntitySet="USUARIO_SUGESTAO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_EcoBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -5244,10 +5247,11 @@
           <Property Name="CLEN_TX_REFERENCIA_LOCAL" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CLEN_IN_ASSISNTENCIA_TECNICA" Type="Int32" Nullable="false" />
           <Property Name="CLEN_IN_ATIVO" Type="Int32" Nullable="false" />
+          <Property Name="CLEN_TX_REFERENCIA_LOCAL_TEXT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CLIENTE" Relationship="Self.FKCLIENTE_EN510475" FromRole="CLIENTE_ENDERECO" ToRole="CLIENTE" />
+          <NavigationProperty Name="UF" Relationship="Self.FK_CLIENTE_ENDERECO_UF" FromRole="CLIENTE_ENDERECO" ToRole="UF" />
           <NavigationProperty Name="TIPO_RESIDENCIA" Relationship="Self.FKCLIENTE_EN166279" FromRole="CLIENTE_ENDERECO" ToRole="TIPO_RESIDENCIA" />
           <NavigationProperty Name="ORDEM_SERVICO" Relationship="Self.FKORDEM_SERV416700" FromRole="CLIENTE_ENDERECO" ToRole="ORDEM_SERVICO" />
-          <NavigationProperty Name="UF" Relationship="DB_EcoBaseModel.FK_CLIENTE_ENDERECO_UF" FromRole="CLIENTE_ENDERECO" ToRole="UF" />
         </EntityType>
         <EntityType Name="CLIENTE_HISTORICO">
           <Key>
@@ -6444,7 +6448,7 @@
           <Property Name="PRAJ_CD_ID" Type="Int32" Nullable="false" />
           <Property Name="PRAA_DT_ANOTACAO" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="USUA_CD_ID" Type="Int32" Nullable="false" />
-          <Property Name="PRAA_TX_ANOTACAO" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="PRAA_TX_ANOTACAO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="PRESTADOR_AJUDANTE" Relationship="Self.FKPRESTADOR_306511" FromRole="PRESTADOR_AJUDANTE_ANOTACOES" ToRole="PRESTADOR_AJUDANTE" />
           <NavigationProperty Name="USUARIO_SUGESTAO" Relationship="Self.FK_PRESTADOR_AJUDANTE_ANOTACOES_USUARIO_SUGESTAO" FromRole="PRESTADOR_AJUDANTE_ANOTACOES" ToRole="USUARIO_SUGESTAO" />
         </EntityType>
@@ -6469,7 +6473,7 @@
           <Property Name="PRES_CD_ID" Type="Int32" Nullable="false" />
           <Property Name="PRAN_DT_ANOTACAO" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="USUA_CD_ID" Type="Int32" Nullable="false" />
-          <Property Name="PRAN_TX_ANOTACAO" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="PRAN_TX_ANOTACAO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="PRESTADOR" Relationship="Self.FKPRESTADOR_652627" FromRole="PRESTADOR_ANOTACOES" ToRole="PRESTADOR" />
           <NavigationProperty Name="USUARIO_SUGESTAO" Relationship="Self.FK_PRESTADOR_ANOTACOES_USUARIO_SUGESTAO" FromRole="PRESTADOR_ANOTACOES" ToRole="USUARIO_SUGESTAO" />
         </EntityType>
@@ -6530,10 +6534,10 @@
           <Property Name="PREN_NM_CIDADE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PREN_NR_CEP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UF_CD_ID" Type="Int32" Nullable="false" />
-          <Property Name="PREN_DS_REFERENCIA_LOCAL" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="PREN_IN_FLAG_ESTOQUE" Type="Int32" Nullable="false" />
           <Property Name="PREN_NM_NOME_ESTOQUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PREN_IN_ATIVO" Type="Int32" Nullable="false" />
+          <Property Name="PREN_DS_REFERENCIA_LOCAL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PRESTADOR" Relationship="Self.FKPRESTADOR_176609" FromRole="PRESTADOR_ENDERECO" ToRole="PRESTADOR" />
           <NavigationProperty Name="PRESTADOR_ENDERECO_ESTOQUE" Relationship="Self.FKPRESTADOR_614726" FromRole="PRESTADOR_ENDERECO" ToRole="PRESTADOR_ENDERECO_ESTOQUE" />
           <NavigationProperty Name="UF" Relationship="Self.FKPRESTADOR_649765" FromRole="PRESTADOR_ENDERECO" ToRole="UF" />
@@ -6760,8 +6764,8 @@
           </Key>
           <Property Name="REGI_CD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="REGI_NM_NOME" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="REGI_DS_RESTRICOES" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="REGI_IN_ATIVO" Type="Int32" Nullable="false" />
+          <Property Name="REGI_DS_RESTRICOES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PRESTADOR_REGIAO" Relationship="Self.FKPRESTADOR_969682" FromRole="REGIAO" ToRole="PRESTADOR_REGIAO" />
           <NavigationProperty Name="REGIAO_COBERTURA" Relationship="Self.FKREGIAO_COB871090" FromRole="REGIAO" ToRole="REGIAO_COBERTURA" />
         </EntityType>
@@ -6848,6 +6852,7 @@
           <Property Name="TEMP_TX_MENSAGEM" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="TEMP_AQ_MENSAGEM" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="TEMP_IN_ATIVO" Type="Int32" Nullable="false" />
+          <Property Name="TEMP_TX_MENSAGEM_TEXTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CLIENTE_MARKETING_ATIVO" Relationship="Self.FK_CLIENTE_MARKETING_ATIVO_TEMPLATE_MENSAGEM" FromRole="TEMPLATE_MENSAGEM" ToRole="CLIENTE_MARKETING_ATIVO" />
         </EntityType>
         <EntityType Name="TICKET_ATENDIMENTO">
@@ -7035,6 +7040,7 @@
           <Property Name="UF_CD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UF_NM_NOME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UF_SG_SIGLA" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CLIENTE_ENDERECO" Relationship="Self.FK_CLIENTE_ENDERECO_UF" FromRole="UF" ToRole="CLIENTE_ENDERECO" />
           <NavigationProperty Name="DESTINADOR" Relationship="Self.FKDESTINADOR47935" FromRole="UF" ToRole="DESTINADOR" />
           <NavigationProperty Name="LEILOEIRO" Relationship="Self.FKLEILOEIRO521620" FromRole="UF" ToRole="LEILOEIRO" />
           <NavigationProperty Name="PARCEIRO_ENDERECO" Relationship="Self.FKPARCEIRO_E290760" FromRole="UF" ToRole="PARCEIRO_ENDERECO" />
@@ -7042,7 +7048,6 @@
           <NavigationProperty Name="PRESTADOR_ENDERECO" Relationship="Self.FKPRESTADOR_649765" FromRole="UF" ToRole="PRESTADOR_ENDERECO" />
           <NavigationProperty Name="PRESTADOR_MOTORISTA" Relationship="Self.FKPRESTADOR_995951" FromRole="UF" ToRole="PRESTADOR_MOTORISTA" />
           <NavigationProperty Name="REGIAO_COBERTURA" Relationship="Self.FKREGIAO_COB317722" FromRole="UF" ToRole="REGIAO_COBERTURA" />
-          <NavigationProperty Name="CLIENTE_ENDERECO" Relationship="DB_EcoBaseModel.FK_CLIENTE_ENDERECO_UF" FromRole="UF" ToRole="CLIENTE_ENDERECO" />
         </EntityType>
         <EntityType Name="UNIDADE">
           <Key>
@@ -7080,7 +7085,7 @@
           <Property Name="USUA_NM_LOGIN" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="USUA_EM_EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="USUA_NR_MATRICULA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="USUA_NR_CELULAR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USUA_NR_CELULAR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="USUA_NM_SENHA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="USUA_NM_SENHA_CONFIRMA" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="USUA_NM_NOVA_SENHA" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
@@ -7564,6 +7569,18 @@
             </Principal>
             <Dependent Role="CLIENTE_APOLICE">
               <PropertyRef Name="PARC_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_ENDERECO_UF">
+          <End Role="UF" Type="Self.UF" Multiplicity="1" />
+          <End Role="CLIENTE_ENDERECO" Type="Self.CLIENTE_ENDERECO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UF">
+              <PropertyRef Name="UF_CD_ID" />
+            </Principal>
+            <Dependent Role="CLIENTE_ENDERECO">
+              <PropertyRef Name="UF_CD_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9758,6 +9775,10 @@
             <End Role="PARCEIRO" EntitySet="PARCEIRO" />
             <End Role="CLIENTE_APOLICE" EntitySet="CLIENTE_APOLICE" />
           </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_ENDERECO_UF" Association="Self.FK_CLIENTE_ENDERECO_UF">
+            <End Role="UF" EntitySet="UF" />
+            <End Role="CLIENTE_ENDERECO" EntitySet="CLIENTE_ENDERECO" />
+          </AssociationSet>
           <AssociationSet Name="FKCLIENTE_EN166279" Association="Self.FKCLIENTE_EN166279">
             <End Role="TIPO_RESIDENCIA" EntitySet="TIPO_RESIDENCIA" />
             <End Role="CLIENTE_ENDERECO" EntitySet="CLIENTE_ENDERECO" />
@@ -10394,23 +10415,7 @@
             <End Role="USUARIO_SUGESTAO" EntitySet="USUARIO_SUGESTAO" />
             <End Role="USUARIO_ANEXO" EntitySet="USUARIO_ANEXO" />
           </AssociationSet>
-          <AssociationSet Name="FK_CLIENTE_ENDERECO_UF" Association="DB_EcoBaseModel.FK_CLIENTE_ENDERECO_UF">
-            <End Role="UF" EntitySet="UF" />
-            <End Role="CLIENTE_ENDERECO" EntitySet="CLIENTE_ENDERECO" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_CLIENTE_ENDERECO_UF">
-          <End Type="DB_EcoBaseModel.UF" Role="UF" Multiplicity="1" />
-          <End Type="DB_EcoBaseModel.CLIENTE_ENDERECO" Role="CLIENTE_ENDERECO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UF">
-              <PropertyRef Name="UF_CD_ID" />
-            </Principal>
-            <Dependent Role="CLIENTE_ENDERECO">
-              <PropertyRef Name="UF_CD_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10624,6 +10629,7 @@
                 <ScalarProperty Name="CLEN_TX_REFERENCIA_LOCAL" ColumnName="CLEN_TX_REFERENCIA_LOCAL" />
                 <ScalarProperty Name="CLEN_IN_ASSISNTENCIA_TECNICA" ColumnName="CLEN_IN_ASSISNTENCIA_TECNICA" />
                 <ScalarProperty Name="CLEN_IN_ATIVO" ColumnName="CLEN_IN_ATIVO" />
+                <ScalarProperty Name="CLEN_TX_REFERENCIA_LOCAL_TEXT" ColumnName="CLEN_TX_REFERENCIA_LOCAL_TEXT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11757,10 +11763,10 @@
                 <ScalarProperty Name="PREN_NM_CIDADE" ColumnName="PREN_NM_CIDADE" />
                 <ScalarProperty Name="PREN_NR_CEP" ColumnName="PREN_NR_CEP" />
                 <ScalarProperty Name="UF_CD_ID" ColumnName="UF_CD_ID" />
-                <ScalarProperty Name="PREN_DS_REFERENCIA_LOCAL" ColumnName="PREN_DS_REFERENCIA_LOCAL" />
                 <ScalarProperty Name="PREN_IN_FLAG_ESTOQUE" ColumnName="PREN_IN_FLAG_ESTOQUE" />
                 <ScalarProperty Name="PREN_NM_NOME_ESTOQUE" ColumnName="PREN_NM_NOME_ESTOQUE" />
                 <ScalarProperty Name="PREN_IN_ATIVO" ColumnName="PREN_IN_ATIVO" />
+                <ScalarProperty Name="PREN_DS_REFERENCIA_LOCAL" ColumnName="PREN_DS_REFERENCIA_LOCAL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11960,8 +11966,8 @@
               <MappingFragment StoreEntitySet="REGIAO">
                 <ScalarProperty Name="REGI_CD_ID" ColumnName="REGI_CD_ID" />
                 <ScalarProperty Name="REGI_NM_NOME" ColumnName="REGI_NM_NOME" />
-                <ScalarProperty Name="REGI_DS_RESTRICOES" ColumnName="REGI_DS_RESTRICOES" />
                 <ScalarProperty Name="REGI_IN_ATIVO" ColumnName="REGI_IN_ATIVO" />
+                <ScalarProperty Name="REGI_DS_RESTRICOES" ColumnName="REGI_DS_RESTRICOES" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12042,6 +12048,7 @@
                 <ScalarProperty Name="TEMP_TX_MENSAGEM" ColumnName="TEMP_TX_MENSAGEM" />
                 <ScalarProperty Name="TEMP_AQ_MENSAGEM" ColumnName="TEMP_AQ_MENSAGEM" />
                 <ScalarProperty Name="TEMP_IN_ATIVO" ColumnName="TEMP_IN_ATIVO" />
+                <ScalarProperty Name="TEMP_TX_MENSAGEM_TEXTO" ColumnName="TEMP_TX_MENSAGEM_TEXTO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

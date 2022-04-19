@@ -23,8 +23,8 @@ namespace EntitiesServices.Model
     
         public int REGI_CD_ID { get; set; }
         public string REGI_NM_NOME { get; set; }
-        public byte[] REGI_DS_RESTRICOES { get; set; }
         public int REGI_IN_ATIVO { get; set; }
+        public string REGI_DS_RESTRICOES { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRESTADOR_REGIAO> PRESTADOR_REGIAO { get; set; }

@@ -16,6 +16,7 @@ namespace DataServices.Repositories
         public List<PRESTADOR> GetAllItens()
         {
             IQueryable<PRESTADOR> query = Db.PRESTADOR;
+            query = query.Where(p => p.PRES_IN_FLAG_ATIVO == 1);
             return query.ToList();
         }
 

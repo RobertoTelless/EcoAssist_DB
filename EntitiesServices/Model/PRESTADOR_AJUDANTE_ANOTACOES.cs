@@ -18,7 +18,7 @@ namespace EntitiesServices.Model
         public int PRAJ_CD_ID { get; set; }
         public System.DateTime PRAA_DT_ANOTACAO { get; set; }
         public int USUA_CD_ID { get; set; }
-        public byte[] PRAA_TX_ANOTACAO { get; set; }
+        public string PRAA_TX_ANOTACAO { get; set; }
     
         public virtual PRESTADOR_AJUDANTE PRESTADOR_AJUDANTE { get; set; }
         public virtual USUARIO_SUGESTAO USUARIO_SUGESTAO { get; set; }

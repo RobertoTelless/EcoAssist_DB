@@ -29,10 +29,10 @@ namespace EntitiesServices.Model
         public string PREN_NM_CIDADE { get; set; }
         public string PREN_NR_CEP { get; set; }
         public int UF_CD_ID { get; set; }
-        public byte[] PREN_DS_REFERENCIA_LOCAL { get; set; }
         public int PREN_IN_FLAG_ESTOQUE { get; set; }
         public string PREN_NM_NOME_ESTOQUE { get; set; }
         public int PREN_IN_ATIVO { get; set; }
+        public string PREN_DS_REFERENCIA_LOCAL { get; set; }
     
         public virtual PRESTADOR PRESTADOR { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

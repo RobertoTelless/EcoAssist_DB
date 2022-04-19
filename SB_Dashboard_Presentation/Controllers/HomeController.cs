@@ -17,6 +17,9 @@ namespace ERP_Condominios_Solution.Controllers
         public ActionResult Index()
         {
             Session["ListaCliente"] = null;
+            Session["ListaPrestador"] = null;
+            Session["ListaOS"] = null;
+            Session["ListaAT"] = null;
             return RedirectToAction("Index", "MasterData");
         }
 

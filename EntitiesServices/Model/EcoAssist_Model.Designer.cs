@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Projetos\EcoAssist\EcoAssist\Aplicacao_MasterData\EntitiesServices\Model\EcoAssis_Model.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Projetos\EcoAssist\EcoAssist\Aplicacao_MasterData\EntitiesServices\Model\EcoAssist_Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

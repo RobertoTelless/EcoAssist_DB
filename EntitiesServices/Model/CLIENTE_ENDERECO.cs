@@ -33,11 +33,12 @@ namespace EntitiesServices.Model
         public byte[] CLEN_TX_REFERENCIA_LOCAL { get; set; }
         public int CLEN_IN_ASSISNTENCIA_TECNICA { get; set; }
         public int CLEN_IN_ATIVO { get; set; }
+        public string CLEN_TX_REFERENCIA_LOCAL_TEXT { get; set; }
     
         public virtual CLIENTE CLIENTE { get; set; }
+        public virtual UF UF { get; set; }
         public virtual TIPO_RESIDENCIA TIPO_RESIDENCIA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDEM_SERVICO> ORDEM_SERVICO { get; set; }
-        public virtual UF UF { get; set; }
     }
 }
