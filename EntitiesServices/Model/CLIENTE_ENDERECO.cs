@@ -34,6 +34,7 @@ namespace EntitiesServices.Model
         public int CLEN_IN_ASSISNTENCIA_TECNICA { get; set; }
         public int CLEN_IN_ATIVO { get; set; }
         public string CLEN_TX_REFERENCIA_LOCAL_TEXT { get; set; }
+        public string CLEN_NM_EXIBE { get; set; }
     
         public virtual CLIENTE CLIENTE { get; set; }
         public virtual UF UF { get; set; }

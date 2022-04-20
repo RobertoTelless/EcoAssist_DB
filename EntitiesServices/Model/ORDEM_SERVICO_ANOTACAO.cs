@@ -19,6 +19,7 @@ namespace EntitiesServices.Model
         public System.DateTime OSAN_DT_ANOTACAO { get; set; }
         public int USUA_CD_ID { get; set; }
         public byte[] OSAN_TX_ANOTACAO { get; set; }
+        public string OSAN_TX_TEXTO_ANOTACAO { get; set; }
     
         public virtual ORDEM_SERVICO ORDEM_SERVICO { get; set; }
         public virtual USUARIO_SUGESTAO USUARIO_SUGESTAO { get; set; }

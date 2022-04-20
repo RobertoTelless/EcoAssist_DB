@@ -1,7 +1,819 @@
-﻿
+﻿@using Presentation.Extensions
+@model EntitiesServices.Model.ORDEM_SERVICO
+@using CrossCutting
 @{
-    ViewBag.Title = "VerRegistroOrdemServico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="widget style1 navy-bg">
+                <div class="row vertical-align">
+                    <div class="col-xs-3">
+                        <i class="fa fa-calendar fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-left">
+                        <h3 class="font-normal">Número: @Model.ORSE_NR_NUMERO</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="widget style1 yellow-bg">
+                <div class="row vertical-align">
+                    <div class="col-xs-3">
+                        <i class="fa fa-sitemap fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-left">
+                        <h3 class="font-normal">@Model.STATUS_ORDEM_SERVICO.STOS_NM_NOME</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (Model.ORSE_IN_ATIVO == 1)
+        {
+            <div class="col-lg-2">
+                <div class="widget style1 blue-bg">
+                    <div class="row vertical-align">
+                        <div class="col-xs-3">
+                            <i class="fa fa-thumbs-o-up fa-3x"></i>
+                        </div>
+                        <div class="col-xs-9 text-left">
+                            <h3 class="font-normal">Ativa</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-lg-2">
+                <div class="widget style1 red-bg">
+                    <div class="row vertical-align">
+                        <div class="col-xs-3">
+                            <i class="fa fa-thumbs-o-down fa-3x"></i>
+                        </div>
+                        <div class="col-xs-9 text-left">
+                            <h3 class="font-normal">Inativa</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Ordem de Serviço - Visualização</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-group">
+                        @Html.ButtonLinkIndex(text: "Voltar", action: "MontarTelaOrdemServico", controller: "MasterData")
+                    </div>
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-1">Dados Gerais</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-2">Anexos</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-3">Produtos</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-4">Agendamentos</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-5">Prestadores</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-6">Propostas</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-7">Anotações</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            @*Dados Gerais*@
+                            <div id="tab-1" class="tab-pane active">
+                                <div class="panel-body">
+                                    @using (Html.BeginForm("VerRegistroOrdemServico", "MasterData", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "pwd-container1" }))
+                                    {
+                                        <div class="row" style="width: 100%;">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Tipo
+                                                        @Html.TextBoxFor(m => m.TIPO_ORDEM_SERVICO.TIOS_NM_NOME, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class=" col-lg-4 col-md-4 col-xs-12">
+                                                        Cliente
+                                                        @Html.TextBoxFor(m => m.CLIENTE.CLIE_NM_NOME, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-xs-12">
+                                                        Parceiro
+                                                        @Html.TextBoxFor(m => m.PARCEIRO.PARC_NM_NOME, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-xs-12">
+                                                        Status
+                                                        @Html.TextBoxFor(m => m.STATUS_ORDEM_SERVICO.STOS_NM_NOME, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Número
+                                                        @Html.TextBoxFor(m => m.ORSE_NR_NUMERO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class=" col-lg-2 col-md-2 col-xs-12">
+                                                        Instância
+                                                        @Html.TextBoxFor(m => m.ORSE_NR_INSTANCIA, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Data de Cadastro
+                                                        @Html.TextBoxFor(m => m.ORSE_DT_CADASTRO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-xs-12">
+                                                        Criada Por
+                                                        @Html.TextBoxFor(m => m.USUARIO_SUGESTAO.USUA_NM_NOME, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Data Aprovação
+                                                        @Html.TextBoxFor(m => m.ORSE_DT_APROVADA_EM, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-xs-12">
+                                                        Aprovada Por
+                                                        @Html.TextBoxFor(m => m.USUARIO_SUGESTAO1.USUA_NM_NOME, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-7 col-md-7 col-xs-12">
+                                                        Retirar Com
+                                                        @Html.TextBoxFor(m => m.ORSE_NM_RETIRAR_COM, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-xs-12">
+                                                        Termo de Doação
+                                                        @Html.TextBoxFor(m => m.ORSE_AQ_TEMO_DOACAO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-lg-5 col-md-5 col-xs-12">
+                                                        Endereço
+                                                        @Html.TextBoxFor(m => m.CLIENTE_ENDERECO.CLEN_NM_EXIBE, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Bairro
+                                                        @Html.TextBoxFor(m => m.CLIENTE_ENDERECO.CLEN_NM_BAIRRO, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        Cidade
+                                                        @Html.TextBoxFor(m => m.CLIENTE_ENDERECO.CLEN_NM_CIDADE, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-1 col-md-1 col-xs-12">
+                                                        UF
+                                                        @Html.TextBoxFor(m => m.CLIENTE_ENDERECO.UF.UF_SG_SIGLA, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-xs-12">
+                                                        CEP
+                                                        @Html.TextBoxFor(m => m.CLIENTE_ENDERECO.CLEN_NR_CEP, new { @class = "form-control", autofocus = true, @readonly = "readonly" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
 
-<h2>VerRegistroOrdemServico</h2>
+                            @*Imagens - Foto e Anexos*@
+                            <div id="tab-2" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="col-lg-12 col-md-12 col-xs-12">
+                                            <h4>Anexos</h4>
+                                            <br />
+                                            <div class="form-group">
+                                                <div class="ibox-content">
+                                                    @if (Model.ORDEM_SERVICO_ANEXO.Count > 0)
+                                                    {
+                                                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                            <thead style="background-color:lightsteelblue">
+                                                                <tr>
+                                                                    <th>Título</th>
+                                                                    <th>Data</th>
+                                                                    <th>Tipo</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach (var cond in (Model.ORDEM_SERVICO_ANEXO))
+                                                                {
+                                                                    <tr>
+                                                                        <td>@cond.OSAN_NM_TITULO</td>
+                                                                        <td>@cond.OSAN_DT_ANEXO.ToShortDateString()</td>
+                                                                        @if (cond.OSAN_IN_TIPO == 1)
+                                                                        {
+                                                                            <td>Imagem</td>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <td>Arquivo</td>
+                                                                        }
+                                                                    </tr>
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Produtos*@
+                            <div id="tab-3" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Produtos</h4>
+                                                <br />
+                                                @if (Model.ORDEM_SERVICO_PRODUTO.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Linha</th>
+                                                                <th>Tipo</th>
+                                                                <th>Status Coleta</th>
+                                                                <th>Nome</th>
+                                                                <th>Fabricante</th>
+                                                                <th>Modelo</th>
+                                                                <th>Num.Série</th>
+                                                                <th>Peso?</th>
+                                                                <th>Valor</th>
+                                                                <th>Situação</th>
+                                                                <th>Estoque OK?</th>
+                                                                <th>Entregue?</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.ORDEM_SERVICO_PRODUTO))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.LINHA_PRODUTO.LIPR_NM_NOME</td>
+                                                                    <td>@cond.TIPO_PRODUTO.TIPR_NM_NOME</td>
+                                                                    <td>@cond.STATUS_COLETA.STCO_NM_NOME</td>
+                                                                    <td>@cond.OSPD_NM_APARELHO</td>
+                                                                    <td>@cond.OSPD_NM_FABRICANTE</td>
+                                                                    <td>@cond.OSPD_NM_MODELO</td>
+                                                                    <td>@cond.OSPD_NR_NUMERO_SERIE</td>
+                                                                    <td>@cond.OSPD_NR_PESO</td>
+                                                                    <td>@CrossCutting.Formatters.DecimalFormatter(cond.OSPD_VL_VALOR.Value)</td>
+                                                                    <td>@cond.OSPD_DS_SITUACAO</td>
+                                                                    @if (cond.OSPD_IN_ESTOQUE_OK == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Sim</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-success">Não</span></td>
+                                                                    }                                                   
+                                                                    @if (cond.OSPD_IN_ENTREGUE == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Sim</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-success">Não</span></td>
+                                                                    }                                                   
+                                                                    @if (cond.OSPD_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Agendamentos*@
+                            <div id="tab-4" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Agendamentos</h4>
+                                                <br />
+                                                @if (Model.ORDEM_SERVICO_AGENDAMENTO.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Data</th>
+                                                                <th>Período</th>
+                                                                <th>Status</th>
+                                                                <th>Hora Chegada</th>
+                                                                <th>Hora Saída</th>
+                                                                <th>Tipo Falha</th>
+                                                                <th>Motivo Falha</th>
+                                                                <th>Justificativa</th>
+                                                                <th>Criado Por</th>
+                                                                <th>Data Criação</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.ORDEM_SERVICO_AGENDAMENTO))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.OSAG_DT_AGENDAMENTO.ToShortDateString()</td>
+                                                                    <td>@cond.PERIODO.PERI_NM_NOME</td>
+                                                                    <td>@cond.STATUS_COLETA.STCO_NM_NOME</td>
+                                                                    <td>@cond.OSAG_HR_CHEGADA_CLIENTE</td>
+                                                                    <td>@cond.OSAG_HR_SAIDA_CLIENTE</td>
+                                                                    <td>@cond.OSAG_IN_TIPO_FALHA</td>
+                                                                    <td>@cond.MOTIVO_FALHA_ORDEM_SERVICO.MFOS_DS_DESCRICAO</td>
+                                                                    <td>@cond.OSAG_DS_JUSTIFICATIVA</td>
+                                                                    <td>@cond.USUARIO_SUGESTAO.USUA_NM_NOME</td>
+                                                                    <td>@cond.OSAG_DT_CRIADO_EM.ToShortDateString()</td>
+                                                                    @if (cond.OSAG_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Prestadores*@
+                            <div id="tab-5" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Prestadores</h4>
+                                                <br />
+                                                @if (Model.ORDEM_SERVICO_PRESTADOR.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Prestador</th>
+                                                                <th>Veículo</th>
+                                                                <th>Motorista</th>
+                                                                <th>Ajudante</th>
+                                                                <th>Estoque?</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.ORDEM_SERVICO_PRESTADOR))
+                                                            {
+                                                                <tr>
+                                                                    <td>@cond.PRESTADOR.PRES_NM_NOME</td>
+                                                                    <td>@cond.PRESTADOR_VEICULO.PRVE_NR_PLACA</td>
+                                                                    <td>@cond.PRESTADOR_MOTORISTA.PRMO_NM_NOME</td>
+                                                                    <td>@cond.PRESTADOR_AJUDANTE.PRAJ_NM_NOME</td>
+                                                                    @if (cond.OSPR_IN_ESTOQUE == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Sim</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-success">Não</span></td>
+                                                                    }                                                   
+                                                                    @if (cond.OSPR_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*Propostas*@
+                            <div id="tab-6" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <hr />
+                                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                                <h4>Propostas</h4>
+                                                <br />
+                                                @if (Model.ORDEM_SERVICO_PROPOSTA.Count > 0)
+                                                {
+                                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                                        <thead style="background-color:lightsteelblue">
+                                                            <tr>
+                                                                <th>Cod.Proposta</th>
+                                                                <th>Data</th>
+                                                                <th>Número</th>
+                                                                <th>Ativo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var cond in (Model.ORDEM_SERVICO_PROPOSTA))
+                                                            {
+                                                                <tr>
+                                                                    @if (cond.PROP_CD_ID != null)
+                                                                    {
+                                                                        <td>@cond.PROPOSTA.PROP_NM_NOME</td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td>Customizada</td>
+                                                                    }
+                                                                    <td>@cond.OSPP_DT_PROPOSTA.ToShortDateString()</td>
+                                                                    <td>@cond.OSPP_NR_PROPOSTA</td>
+                                                                    @if (cond.OSPP_IN_ATIVO == 1)
+                                                                    {
+                                                                        <td><span class="badge badge-primary">Ativo</span></td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><span class="badge badge-danger">Inativo</span></td>
+                                                                    }                                                   
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            @*Anotações*@
+                            <div id="tab-7" class="tab-pane">
+                                <div class="panel-body">
+                                    <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 1px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; height: 800px" >
+                                        <div class="ibox-title"  style="color: black">
+                                            <h5>Anotações</h5>
+                                        </div>
+                                        <div class="ibox-content" style="color: black; overflow: auto">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    @if (Model.ORDEM_SERVICO_ANOTACAO.Count > 0)
+                                                    {
+                                                        foreach (var item in (Model.ORDEM_SERVICO_ANOTACAO))
+                                                        {
+                                                            <div class="social-feed-box">
+                                                                <div class="social-avatar">
+                                                                    <a href="" class="pull-left">
+                                                                        <img src="@Url.Content(item.USUARIO_SUGESTAO.USUA_AQ_FOTO)" style="width: auto; height: auto; max-height: 110px; max-width: 90px;">
+                                                                    </a>
+                                                                    <div class="media-body">
+                                                                        <a href="#">
+                                                                            @item.USUARIO_SUGESTAO.USUA_NM_NOME
+                                                                        </a>
+                                                                        <small class="text-muted">@item.OSAN_DT_ANOTACAO.ToString("dd/MM/yyyy HH:mm")</small>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="social-body">
+                                                                    <p>
+                                                                        @item.OSAN_TX_ANOTACAO
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                   
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <br />
+                    @Html.ButtonLinkIndex(text: "Voltar", action: "MontarTelaOrdemServico", controller: "MasterData")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+    @Styles.Render("~/plugins/jasnyBootstrapStyles")
+    @Styles.Render("~/plugins/toastrStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/toastr")
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/plugins/jasnyBootstrap")
+    @Scripts.Render("~/plugins/sparkline")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+
+    @*<script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.dataTables-example').DataTable({
+                pageLength: 25,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'excel', title: 'Excel' },
+                    { extend: 'pdf', title: 'PDF' },
+
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+
+
+        });
+    </script>*@
+
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            $('.date-picker').datepicker(
+                {
+                    dateFormat: 'dd/mm/yy',
+                    dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                    dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                    dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                    monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                    monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    nextText: 'Proximo',
+                    prevText: 'Anterior',
+                    showOn: "focus"
+                }
+            )
+                .css("display", "normal")
+                .next("button").button({
+                    icons: { primary: "ui-icon-calendar" },
+                    label: "Selecione uma data",
+                    text: false
+                });
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#cpf").mask("999.999.999-99");
+            $("#cnpj").mask("99.999.999/9999-99");
+            $("#cep").mask("99999-999");
+            $("#cep1").mask("99999-999");
+            $("#dn").mask("99/99/9999");
+
+            $("#tel").mask("(99)9999-9999");
+            $("#telAdicional").mask("(99)9999-9999");
+            $("#cel").mask("(99)99999-9999");
+            
+            
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Chama o evento após selecionar um valor
+            $('#pessoa').on('change', function () {
+                //Verifica se o valor é igual a 1 e mostra a divCnpj
+                if (this.value == '2') {
+                    $("#PF").hide();
+                    $("#PJ").show();
+                    $("#RS").show();
+                    $("#DS").show();
+                }
+                //Se o tempo for mé igual a 2 mostra a divCpf
+                else if (this.value == '1') {
+    CLIE_CD_ID               $("#PJ").hide();
+                    $("#PF").show();
+                    $("#RS").hide();
+                    $("#DS").hide();
+                }
+                else if (this.value == '4') {
+                    $("#PF").show();
+                    $("#PJ").hide();
+                    $("#RS").hide();
+                    $("#DS").hide();
+                }
+
+                //Se não for nem 1 nem 2 esconde as duas
+                else {
+                    $("#PJ").hide();
+                    $("#PF").hide();
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var i = -1;
+            var toastCount = 0;
+            var $toastlast;
+            var getMessage = function () {
+                var msg = 'Hi, welcome to Inspinia. This is example of Toastr notification box.';
+                return msg;
+            };
+
+            $('#basictoast').click(function () {
+                // Display a success toast, with a title
+                toastr.success('Edição am andamento!')
+            });
+            $('#showtoast').click(function () {
+                var shortCutFunction = $("#toastTypeGroup input:radio:checked").val();
+                var msg = $('#message').val();
+                var title = $('#title').val() || '';
+                var $showDuration = $('#showDuration');
+                var $hideDuration = $('#hideDuration');
+                var $timeOut = $('#timeOut');
+                var $extendedTimeOut = $('#extendedTimeOut');
+                var $showEasing = $('#showEasing');
+                var $hideEasing = $('#hideEasing');
+                var $showMethod = $('#showMethod');
+                var $hideMethod = $('#hideMethod');
+                var toastIndex = toastCount++;
+                toastr.options = {
+                    closeButton: $('#closeButton').prop('checked'),
+                    debug: $('#debugInfo').prop('checked'),
+                    progressBar: $('#progressBar').prop('checked'),
+                    positionClass: $('#positionGroup input:radio:checked').val() || 'toast-top-right',
+                    onclick: null
+                };
+                if ($('#addBehaviorOnToastClick').prop('checked')) {
+                    toastr.options.onclick = function () {
+                        alert('You can perform some custom action after a toast goes away');
+                    };
+                }
+                if ($showDuration.val().length) {
+                    toastr.options.showDuration = $showDuration.val();
+                }
+                if ($hideDuration.val().length) {
+                    toastr.options.hideDuration = $hideDuration.val();
+                }
+                if ($timeOut.val().length) {
+                    toastr.options.timeOut = $timeOut.val();
+                }
+                if ($extendedTimeOut.val().length) {
+                    toastr.options.extendedTimeOut = $extendedTimeOut.val();
+                }
+                if ($showEasing.val().length) {
+                    toastr.options.showEasing = $showEasing.val();
+                }
+                if ($hideEasing.val().length) {
+                    toastr.options.hideEasing = $hideEasing.val();
+                }
+                if ($showMethod.val().length) {
+                    toastr.options.showMethod = $showMethod.val();
+                }
+                if ($hideMethod.val().length) {
+                    toastr.options.hideMethod = $hideMethod.val();
+                }
+                if (!msg) {
+                    msg = getMessage();
+                }
+                $("#toastrOptions").text("Command: toastr["
+                    + shortCutFunction
+                    + "](\""
+                    + msg
+                    + (title ? "\", \"" + title : '')
+                    + "\")\n\ntoastr.options = "
+                    + JSON.stringify(toastr.options, null, 2)
+                );
+                var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+                $toastlast = $toast;
+                if ($toast.find('#okBtn').length) {
+                    $toast.delegate('#okBtn', 'click', function () {
+                        alert('you clicked me. i was toast #' + toastIndex + '. goodbye!');
+                        $toast.remove();
+                    });
+                }
+                if ($toast.find('#surpriseBtn').length) {
+                    $toast.delegate('#surpriseBtn', 'click', function () {
+                        alert('Surprise! you clicked me. i was toast #' + toastIndex + '. You could perform an action here.');
+                    });
+                }
+            });
+            function getLastToast() {
+                return $toastlast;
+            }
+            $('#clearlasttoast').click(function () {
+                toastr.clear(getLastToast());
+            });
+            $('#cleartoasts').click(function () {
+                toastr.clear();
+            });
+
+        });
+    </script>
+    <script>
+
+        function SubmitCEP() {
+
+            var usr= document.getElementById('cep1').value;
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("BuscarCEPCliente")',
+                data: "CEP:" + usr
+            });
+
+            return true;
+        }
+    </script>
+
+    <script>
+        function PesquisaCep(cep, btn, tipoEnd) {
+            data = {
+                cep: cep
+                , tipoEnd: tipoEnd
+            }
+
+            $(btn).attr("disabled", "disabled");
+
+            $.ajax({
+                url: '../PesquisaCEP_Javascript'
+                , type: 'POST'
+                , data: data
+                , success: function (r) {
+                    if (tipoEnd == 1) {
+                        $('#endereco').val(r.CLIE_NM_ENDERECO);
+                        $('#bairro').val(r.CLIE_NM_BAIRRO);
+                        $('#cidade').val(r.CLIE_NM_CIDADE);
+
+                        $('#uf option[value="' + r.UF_CD_ID + '"]').attr("selected", "selected");
+                        $('#btnBuscaCep').removeAttr("disabled");
+                    } else if (tipoEnd == 2) {
+                        $('#endEntrega').val(r.CLIE_NM_ENDERECO_ENTREGA);
+                        $('#bairroEntrega').val(r.CLIE_NM_BAIRRO_ENTREGA);
+                        $('#cidEntrega').val(r.CLIE_NM_CIDADE_ENTREGA);
+
+                        $('#ufEntrega').val(r.CLIE_SG_UF_ENTREGA);
+                        $('#btnBuscaCepEntrega').removeAttr("disabled");
+                    }
+                }
+            });
+        }
+    </script>
+
+     <script>
+        function MudaIdCliente(id) {
+            $('#idClie').val(id);
+        }
+    </script>
+
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                  alert("@ViewBag.Message");
+            };
+        </script>
+    }
+}
 

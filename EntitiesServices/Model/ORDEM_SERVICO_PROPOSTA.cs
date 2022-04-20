@@ -25,8 +25,8 @@ namespace EntitiesServices.Model
         public Nullable<int> PROP_CD_ID { get; set; }
         public System.DateTime OSPP_DT_PROPOSTA { get; set; }
         public string OSPP_NR_PROPOSTA { get; set; }
-        public byte[] OSPP_TX_TEXTO { get; set; }
         public int OSPP_IN_ATIVO { get; set; }
+        public string OSPR_TX_TEXTO { get; set; }
     
         public virtual ORDEM_SERVICO ORDEM_SERVICO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

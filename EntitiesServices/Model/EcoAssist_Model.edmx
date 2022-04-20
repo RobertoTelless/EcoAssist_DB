@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_EcoBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_EcoBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACONDICIONAMENTO">
           <Key>
             <PropertyRef Name="ACON_CD_ID" />
@@ -197,6 +197,7 @@
           <Property Name="CLEN_IN_ASSISNTENCIA_TECNICA" Type="int" Nullable="false" />
           <Property Name="CLEN_IN_ATIVO" Type="int" Nullable="false" />
           <Property Name="CLEN_TX_REFERENCIA_LOCAL_TEXT" Type="text" />
+          <Property Name="CLEN_NM_EXIBE" Type="varchar" MaxLength="163" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="CLIENTE_HISTORICO">
           <Key>
@@ -837,7 +838,8 @@
           <Property Name="ORSE_CD_ID" Type="int" Nullable="false" />
           <Property Name="OSAN_DT_ANOTACAO" Type="date" Nullable="false" />
           <Property Name="USUA_CD_ID" Type="int" Nullable="false" />
-          <Property Name="OSAN_TX_ANOTACAO" Type="image" Nullable="false" />
+          <Property Name="OSAN_TX_ANOTACAO" Type="image" />
+          <Property Name="OSAN_TX_TEXTO_ANOTACAO" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="ORDEM_SERVICO_HISTORICO">
           <Key>
@@ -894,8 +896,8 @@
           <Property Name="PROP_CD_ID" Type="int" />
           <Property Name="OSPP_DT_PROPOSTA" Type="date" Nullable="false" />
           <Property Name="OSPP_NR_PROPOSTA" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="OSPP_TX_TEXTO" Type="image" />
           <Property Name="OSPP_IN_ATIVO" Type="int" Nullable="false" />
+          <Property Name="OSPR_TX_TEXTO" Type="text" />
         </EntityType>
         <EntityType Name="ORDEM_SERVICO_PROPOSTA_ANEXO">
           <Key>
@@ -1432,8 +1434,8 @@
           <Property Name="PROP_NM_NOME" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PROP_DT_CRIACAO" Type="date" Nullable="false" />
           <Property Name="PROP_DT_VALIDADE" Type="date" Nullable="false" />
-          <Property Name="PROP_TX_TEXTO" Type="image" Nullable="false" />
           <Property Name="PROP_IN_ATIVO" Type="int" Nullable="false" />
+          <Property Name="PROP_TX_TEXTO" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="REGIAO">
           <Key>
@@ -5012,8 +5014,7 @@
             <End Role="USUARIO_SUGESTAO" EntitySet="USUARIO_SUGESTAO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_EcoBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -5252,6 +5253,7 @@
           <NavigationProperty Name="UF" Relationship="Self.FK_CLIENTE_ENDERECO_UF" FromRole="CLIENTE_ENDERECO" ToRole="UF" />
           <NavigationProperty Name="TIPO_RESIDENCIA" Relationship="Self.FKCLIENTE_EN166279" FromRole="CLIENTE_ENDERECO" ToRole="TIPO_RESIDENCIA" />
           <NavigationProperty Name="ORDEM_SERVICO" Relationship="Self.FKORDEM_SERV416700" FromRole="CLIENTE_ENDERECO" ToRole="ORDEM_SERVICO" />
+          <Property Name="CLEN_NM_EXIBE" Type="String" Nullable="false" MaxLength="163" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="CLIENTE_HISTORICO">
           <Key>
@@ -6024,7 +6026,8 @@
           <Property Name="ORSE_CD_ID" Type="Int32" Nullable="false" />
           <Property Name="OSAN_DT_ANOTACAO" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="USUA_CD_ID" Type="Int32" Nullable="false" />
-          <Property Name="OSAN_TX_ANOTACAO" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="OSAN_TX_ANOTACAO" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="OSAN_TX_TEXTO_ANOTACAO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ORDEM_SERVICO" Relationship="Self.FKORDEM_SERV988658" FromRole="ORDEM_SERVICO_ANOTACAO" ToRole="ORDEM_SERVICO" />
           <NavigationProperty Name="USUARIO_SUGESTAO" Relationship="Self.FK_ORDEM_SERVICO_ANOTACAO_USUARIO_SUGESTAO" FromRole="ORDEM_SERVICO_ANOTACAO" ToRole="USUARIO_SUGESTAO" />
         </EntityType>
@@ -6100,8 +6103,8 @@
           <Property Name="PROP_CD_ID" Type="Int32" />
           <Property Name="OSPP_DT_PROPOSTA" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="OSPP_NR_PROPOSTA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="OSPP_TX_TEXTO" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="OSPP_IN_ATIVO" Type="Int32" Nullable="false" />
+          <Property Name="OSPR_TX_TEXTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ORDEM_SERVICO" Relationship="Self.FKORDEM_SERV125901" FromRole="ORDEM_SERVICO_PROPOSTA" ToRole="ORDEM_SERVICO" />
           <NavigationProperty Name="ORDEM_SERVICO_PROPOSTA_ANEXO" Relationship="Self.FKORDEM_SERV46105" FromRole="ORDEM_SERVICO_PROPOSTA" ToRole="ORDEM_SERVICO_PROPOSTA_ANEXO" />
           <NavigationProperty Name="PROPOSTA" Relationship="Self.FKORDEM_SERV515631" FromRole="ORDEM_SERVICO_PROPOSTA" ToRole="PROPOSTA" />
@@ -6754,8 +6757,8 @@
           <Property Name="PROP_NM_NOME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PROP_DT_CRIACAO" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PROP_DT_VALIDADE" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="PROP_TX_TEXTO" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="PROP_IN_ATIVO" Type="Int32" Nullable="false" />
+          <Property Name="PROP_TX_TEXTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ORDEM_SERVICO_PROPOSTA" Relationship="Self.FKORDEM_SERV515631" FromRole="PROPOSTA" ToRole="ORDEM_SERVICO_PROPOSTA" />
         </EntityType>
         <EntityType Name="REGIAO">
@@ -10616,6 +10619,7 @@
           <EntitySetMapping Name="CLIENTE_ENDERECO">
             <EntityTypeMapping TypeName="DB_EcoBaseModel.CLIENTE_ENDERECO">
               <MappingFragment StoreEntitySet="CLIENTE_ENDERECO">
+                <ScalarProperty Name="CLEN_NM_EXIBE" ColumnName="CLEN_NM_EXIBE" />
                 <ScalarProperty Name="CLEN_CD_ID" ColumnName="CLEN_CD_ID" />
                 <ScalarProperty Name="CLIE_CD_ID" ColumnName="CLIE_CD_ID" />
                 <ScalarProperty Name="TIRE_CD_ID" ColumnName="TIRE_CD_ID" />
@@ -11317,6 +11321,7 @@
                 <ScalarProperty Name="OSAN_DT_ANOTACAO" ColumnName="OSAN_DT_ANOTACAO" />
                 <ScalarProperty Name="USUA_CD_ID" ColumnName="USUA_CD_ID" />
                 <ScalarProperty Name="OSAN_TX_ANOTACAO" ColumnName="OSAN_TX_ANOTACAO" />
+                <ScalarProperty Name="OSAN_TX_TEXTO_ANOTACAO" ColumnName="OSAN_TX_TEXTO_ANOTACAO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11377,8 +11382,8 @@
                 <ScalarProperty Name="PROP_CD_ID" ColumnName="PROP_CD_ID" />
                 <ScalarProperty Name="OSPP_DT_PROPOSTA" ColumnName="OSPP_DT_PROPOSTA" />
                 <ScalarProperty Name="OSPP_NR_PROPOSTA" ColumnName="OSPP_NR_PROPOSTA" />
-                <ScalarProperty Name="OSPP_TX_TEXTO" ColumnName="OSPP_TX_TEXTO" />
                 <ScalarProperty Name="OSPP_IN_ATIVO" ColumnName="OSPP_IN_ATIVO" />
+                <ScalarProperty Name="OSPR_TX_TEXTO" ColumnName="OSPR_TX_TEXTO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11956,8 +11961,8 @@
                 <ScalarProperty Name="PROP_NM_NOME" ColumnName="PROP_NM_NOME" />
                 <ScalarProperty Name="PROP_DT_CRIACAO" ColumnName="PROP_DT_CRIACAO" />
                 <ScalarProperty Name="PROP_DT_VALIDADE" ColumnName="PROP_DT_VALIDADE" />
-                <ScalarProperty Name="PROP_TX_TEXTO" ColumnName="PROP_TX_TEXTO" />
                 <ScalarProperty Name="PROP_IN_ATIVO" ColumnName="PROP_IN_ATIVO" />
+                <ScalarProperty Name="PROP_TX_TEXTO" ColumnName="PROP_TX_TEXTO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

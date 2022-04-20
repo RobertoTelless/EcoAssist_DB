@@ -24,8 +24,8 @@ namespace EntitiesServices.Model
         public string PROP_NM_NOME { get; set; }
         public System.DateTime PROP_DT_CRIACAO { get; set; }
         public System.DateTime PROP_DT_VALIDADE { get; set; }
-        public byte[] PROP_TX_TEXTO { get; set; }
         public int PROP_IN_ATIVO { get; set; }
+        public string PROP_TX_TEXTO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDEM_SERVICO_PROPOSTA> ORDEM_SERVICO_PROPOSTA { get; set; }
