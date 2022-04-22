@@ -216,6 +216,7 @@
                                                 <th style="width: auto">Categoria</th>
                                                 <th style="width: auto">Cliente</th>
                                                 <th style="width: auto">Ord.Serviço</th>
+                                                <th style="width: auto">Produto</th>
                                                 <th style="width: auto">Status</th>
                                                 <th style="width: auto">Número</th>
                                                 <th style="width: auto">Data Início</th>
@@ -229,7 +230,22 @@
                                                 <tr>
                                                     <td>@cond.CATEGORIA_ATENDIMENTO.CAAT_NM_NOME</td>
                                                     <td>@cond.CLIENTE.CLIE_NM_NOME</td>
-                                                    <td>@cond.ORDEM_SERVICO.ORSE_NR_NUMERO</td>
+                                                    @if (cond.ORDEM_SERVICO != null)
+                                                    {
+                                                        <td>@cond.ORDEM_SERVICO.ORSE_NR_NUMERO</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>-</td>
+                                                    }
+                                                    @if (cond.ORDEM_SERVICO_PRODUTO != null)
+                                                    {
+                                                        <td>@cond.ORDEM_SERVICO_PRODUTO.OSPD_NM_APARELHO</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>-</td>
+                                                    }
                                                     <td>@cond.ATENDIMENTO_STATUS.ATST_NM_NOME</td>
                                                     <td style="cursor: pointer; text-decoration: underline; color: #337ab7;" onclick="mostrarDescAssunto('@cond.ATEN_NM_ASSUNTO')">@cond.ATEN_NR_NUMERO</td>
                                                     <td>@cond.ATEN_DT_INICIO.ToShortDateString()</td>

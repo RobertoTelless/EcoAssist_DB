@@ -24,10 +24,10 @@ namespace EntitiesServices.Model
         public int ATEN_CD_ID { get; set; }
         public int USUA_CD_ID { get; set; }
         public int CAAT_CD_ID { get; set; }
-        public int CLIE_CD_ID { get; set; }
-        public int OSPR_CD_ID { get; set; }
-        public int DEPT_CD_ID { get; set; }
-        public int ORSE_CD_ID { get; set; }
+        public Nullable<int> CLIE_CD_ID { get; set; }
+        public Nullable<int> OSPR_CD_ID { get; set; }
+        public Nullable<int> DEPT_CD_ID { get; set; }
+        public Nullable<int> ORSE_CD_ID { get; set; }
         public int ATST_CD_ID { get; set; }
         public string ATEN_NR_NUMERO { get; set; }
         public string ATEN_NM_ASSUNTO { get; set; }
@@ -39,8 +39,8 @@ namespace EntitiesServices.Model
         public string ATEN_DS_ENCERRAMENTO { get; set; }
         public Nullable<System.DateTime> ATEN_DT_CANCELAMENTO { get; set; }
         public string ATEN_DS_CANCELAMENTO { get; set; }
-        public byte[] ATEN_TX_OBSERVACAO { get; set; }
         public int ATEN_IN_ATIVO { get; set; }
+        public string ATEN_TX_OBSERVACAO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ATENDIMENTO_ACOMPANHAMENTO> ATENDIMENTO_ACOMPANHAMENTO { get; set; }

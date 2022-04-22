@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0b5ff37f493641ef83b0c973578f1cbb" Name="Diagram1">
+      <Diagram DiagramId="36269a87df45400f85e7512b39e90cb1" Name="Diagram1">
         <EntityTypeShape EntityType="DB_EcoBaseModel.ACONDICIONAMENTO" Width="1.5" PointX="28.5" PointY="54.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_EcoBaseModel.ATENDIMENTO_ACOMPANHAMENTO" Width="1.5" PointX="8.25" PointY="62.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_EcoBaseModel.ATENDIMENTO_ANEXO" Width="1.5" PointX="5.25" PointY="71.125" IsExpanded="true" />
@@ -22,7 +22,7 @@
         <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_ANEXO" Width="1.5" PointX="3" PointY="30.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_APOLICE" Width="1.5" PointX="23.25" PointY="45.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_CONTATO" Width="1.5" PointX="3" PointY="26.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_ENDERECO" Width="1.5" PointX="15" PointY="49.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_ENDERECO" Width="1.5" PointX="15" PointY="49.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_HISTORICO" Width="1.5" PointX="22.5" PointY="62.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_MARKETING_ATIVO" Width="1.5" PointX="23.25" PointY="51.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_EcoBaseModel.CLIENTE_PERGUNTA" Width="1.5" PointX="31.5" PointY="68" IsExpanded="true" />

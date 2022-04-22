@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DB_EcoBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DB_EcoBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACONDICIONAMENTO">
           <Key>
             <PropertyRef Name="ACON_CD_ID" />
@@ -20,11 +20,11 @@
           <Property Name="ATAC_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ATEN_CD_ID" Type="int" Nullable="false" />
           <Property Name="USUA_CD_ID" Type="int" Nullable="false" />
-          <Property Name="ATAC_DS_ACOMPANHAMENTO" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ATAC_DS_ACOMPANHAMENTO" Type="text" Nullable="false" />
           <Property Name="ATAC_IN_ATIVO" Type="int" Nullable="false" />
           <Property Name="ATAC_DT_ACOMPANHAMENTO" Type="date" Nullable="false" />
           <Property Name="ATAC_DT_ENCERRAMENTO" Type="date" />
-          <Property Name="ATAC_DS_ENCERRAMENTO" Type="varchar" MaxLength="1000" />
+          <Property Name="ATAC_DS_ENCERRAMENTO" Type="text" />
         </EntityType>
         <EntityType Name="ATENDIMENTO_ANEXO">
           <Key>
@@ -1527,12 +1527,12 @@
           <Property Name="ATEN_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="USUA_CD_ID" Type="int" Nullable="false" />
           <Property Name="CAAT_CD_ID" Type="int" Nullable="false" />
-          <Property Name="CLIE_CD_ID" Type="int" Nullable="false" />
-          <Property Name="OSPR_CD_ID" Type="int" Nullable="false" />
-          <Property Name="DEPT_CD_ID" Type="int" Nullable="false" />
-          <Property Name="ORSE_CD_ID" Type="int" Nullable="false" />
+          <Property Name="CLIE_CD_ID" Type="int" />
+          <Property Name="OSPR_CD_ID" Type="int" />
+          <Property Name="DEPT_CD_ID" Type="int" />
+          <Property Name="ORSE_CD_ID" Type="int" />
           <Property Name="ATST_CD_ID" Type="int" Nullable="false" />
-          <Property Name="ATEN_NR_NUMERO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ATEN_NR_NUMERO" Type="varchar" MaxLength="10" />
           <Property Name="ATEN_NM_ASSUNTO" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="ATEN_DS_DESCRICAO" Type="varchar" MaxLength="1000" />
           <Property Name="ATEN_IN_PRIORIDADE" Type="int" Nullable="false" />
@@ -1542,8 +1542,8 @@
           <Property Name="ATEN_DS_ENCERRAMENTO" Type="varchar" MaxLength="1000" />
           <Property Name="ATEN_DT_CANCELAMENTO" Type="date" />
           <Property Name="ATEN_DS_CANCELAMENTO" Type="varchar" MaxLength="1000" />
-          <Property Name="ATEN_TX_OBSERVACAO" Type="image" />
           <Property Name="ATEN_IN_ATIVO" Type="int" Nullable="false" />
+          <Property Name="ATEN_TX_OBSERVACAO" Type="text" />
         </EntityType>
         <EntityType Name="TIPO_CENTRO_CUSTO">
           <Key>
@@ -3935,7 +3935,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FKTICKET_ATE169271">
-          <End Role="ORDEM_SERVICO_PRODUTO" Type="Self.ORDEM_SERVICO_PRODUTO" Multiplicity="1" />
+          <End Role="ORDEM_SERVICO_PRODUTO" Type="Self.ORDEM_SERVICO_PRODUTO" Multiplicity="0..1" />
           <End Role="TICKET_ATENDIMENTO" Type="Self.TICKET_ATENDIMENTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ORDEM_SERVICO_PRODUTO">
@@ -3971,7 +3971,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FKTICKET_ATE390817">
-          <End Role="ORDEM_SERVICO" Type="Self.ORDEM_SERVICO" Multiplicity="1" />
+          <End Role="ORDEM_SERVICO" Type="Self.ORDEM_SERVICO" Multiplicity="0..1" />
           <End Role="TICKET_ATENDIMENTO" Type="Self.TICKET_ATENDIMENTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ORDEM_SERVICO">
@@ -3983,7 +3983,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FKTICKET_ATE437720">
-          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
           <End Role="TICKET_ATENDIMENTO" Type="Self.TICKET_ATENDIMENTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CLIENTE">
@@ -4007,7 +4007,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FKTICKET_ATE727603">
-          <End Role="DEPARTAMENTO" Type="Self.DEPARTAMENTO" Multiplicity="1" />
+          <End Role="DEPARTAMENTO" Type="Self.DEPARTAMENTO" Multiplicity="0..1" />
           <End Role="TICKET_ATENDIMENTO" Type="Self.TICKET_ATENDIMENTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DEPARTAMENTO">
@@ -5014,7 +5014,8 @@
             <End Role="USUARIO_SUGESTAO" EntitySet="USUARIO_SUGESTAO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_EcoBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -5034,11 +5035,11 @@
           <Property Name="ATAC_CD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ATEN_CD_ID" Type="Int32" Nullable="false" />
           <Property Name="USUA_CD_ID" Type="Int32" Nullable="false" />
-          <Property Name="ATAC_DS_ACOMPANHAMENTO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ATAC_DS_ACOMPANHAMENTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ATAC_IN_ATIVO" Type="Int32" Nullable="false" />
           <Property Name="ATAC_DT_ACOMPANHAMENTO" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ATAC_DT_ENCERRAMENTO" Type="DateTime" Precision="0" />
-          <Property Name="ATAC_DS_ENCERRAMENTO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ATAC_DS_ENCERRAMENTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="USUARIO_SUGESTAO" Relationship="Self.FKATENDIMENT641742" FromRole="ATENDIMENTO_ACOMPANHAMENTO" ToRole="USUARIO_SUGESTAO" />
           <NavigationProperty Name="TICKET_ATENDIMENTO" Relationship="Self.FKATENDIMENT810474" FromRole="ATENDIMENTO_ACOMPANHAMENTO" ToRole="TICKET_ATENDIMENTO" />
         </EntityType>
@@ -5249,11 +5250,11 @@
           <Property Name="CLEN_IN_ASSISNTENCIA_TECNICA" Type="Int32" Nullable="false" />
           <Property Name="CLEN_IN_ATIVO" Type="Int32" Nullable="false" />
           <Property Name="CLEN_TX_REFERENCIA_LOCAL_TEXT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CLEN_NM_EXIBE" Type="String" MaxLength="163" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="CLIENTE" Relationship="Self.FKCLIENTE_EN510475" FromRole="CLIENTE_ENDERECO" ToRole="CLIENTE" />
           <NavigationProperty Name="UF" Relationship="Self.FK_CLIENTE_ENDERECO_UF" FromRole="CLIENTE_ENDERECO" ToRole="UF" />
           <NavigationProperty Name="TIPO_RESIDENCIA" Relationship="Self.FKCLIENTE_EN166279" FromRole="CLIENTE_ENDERECO" ToRole="TIPO_RESIDENCIA" />
           <NavigationProperty Name="ORDEM_SERVICO" Relationship="Self.FKORDEM_SERV416700" FromRole="CLIENTE_ENDERECO" ToRole="ORDEM_SERVICO" />
-          <Property Name="CLEN_NM_EXIBE" Type="String" Nullable="false" MaxLength="163" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="CLIENTE_HISTORICO">
           <Key>
@@ -6865,12 +6866,12 @@
           <Property Name="ATEN_CD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="USUA_CD_ID" Type="Int32" Nullable="false" />
           <Property Name="CAAT_CD_ID" Type="Int32" Nullable="false" />
-          <Property Name="CLIE_CD_ID" Type="Int32" Nullable="false" />
-          <Property Name="OSPR_CD_ID" Type="Int32" Nullable="false" />
-          <Property Name="DEPT_CD_ID" Type="Int32" Nullable="false" />
-          <Property Name="ORSE_CD_ID" Type="Int32" Nullable="false" />
+          <Property Name="CLIE_CD_ID" Type="Int32" />
+          <Property Name="OSPR_CD_ID" Type="Int32" />
+          <Property Name="DEPT_CD_ID" Type="Int32" />
+          <Property Name="ORSE_CD_ID" Type="Int32" />
           <Property Name="ATST_CD_ID" Type="Int32" Nullable="false" />
-          <Property Name="ATEN_NR_NUMERO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ATEN_NR_NUMERO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="ATEN_NM_ASSUNTO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ATEN_DS_DESCRICAO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="ATEN_IN_PRIORIDADE" Type="Int32" Nullable="false" />
@@ -6880,8 +6881,8 @@
           <Property Name="ATEN_DS_ENCERRAMENTO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="ATEN_DT_CANCELAMENTO" Type="DateTime" Precision="0" />
           <Property Name="ATEN_DS_CANCELAMENTO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="ATEN_TX_OBSERVACAO" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ATEN_IN_ATIVO" Type="Int32" Nullable="false" />
+          <Property Name="ATEN_TX_OBSERVACAO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ATENDIMENTO_ACOMPANHAMENTO" Relationship="Self.FKATENDIMENT810474" FromRole="TICKET_ATENDIMENTO" ToRole="ATENDIMENTO_ACOMPANHAMENTO" />
           <NavigationProperty Name="ATENDIMENTO_ANEXO" Relationship="Self.FKATENDIMENT457566" FromRole="TICKET_ATENDIMENTO" ToRole="ATENDIMENTO_ANEXO" />
           <NavigationProperty Name="ATENDIMENTO_STATUS" Relationship="Self.FKTICKET_ATE625723" FromRole="TICKET_ATENDIMENTO" ToRole="ATENDIMENTO_STATUS" />
@@ -7552,7 +7553,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FKTICKET_ATE437720">
-          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
           <End Role="TICKET_ATENDIMENTO" Type="Self.TICKET_ATENDIMENTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CLIENTE">
@@ -8020,7 +8021,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FKTICKET_ATE727603">
-          <End Role="DEPARTAMENTO" Type="Self.DEPARTAMENTO" Multiplicity="1" />
+          <End Role="DEPARTAMENTO" Type="Self.DEPARTAMENTO" Multiplicity="0..1" />
           <End Role="TICKET_ATENDIMENTO" Type="Self.TICKET_ATENDIMENTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DEPARTAMENTO">
@@ -8560,7 +8561,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FKTICKET_ATE390817">
-          <End Role="ORDEM_SERVICO" Type="Self.ORDEM_SERVICO" Multiplicity="1" />
+          <End Role="ORDEM_SERVICO" Type="Self.ORDEM_SERVICO" Multiplicity="0..1" />
           <End Role="TICKET_ATENDIMENTO" Type="Self.TICKET_ATENDIMENTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ORDEM_SERVICO">
@@ -8752,7 +8753,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FKTICKET_ATE169271">
-          <End Role="ORDEM_SERVICO_PRODUTO" Type="Self.ORDEM_SERVICO_PRODUTO" Multiplicity="1" />
+          <End Role="ORDEM_SERVICO_PRODUTO" Type="Self.ORDEM_SERVICO_PRODUTO" Multiplicity="0..1" />
           <End Role="TICKET_ATENDIMENTO" Type="Self.TICKET_ATENDIMENTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ORDEM_SERVICO_PRODUTO">
@@ -10619,7 +10620,6 @@
           <EntitySetMapping Name="CLIENTE_ENDERECO">
             <EntityTypeMapping TypeName="DB_EcoBaseModel.CLIENTE_ENDERECO">
               <MappingFragment StoreEntitySet="CLIENTE_ENDERECO">
-                <ScalarProperty Name="CLEN_NM_EXIBE" ColumnName="CLEN_NM_EXIBE" />
                 <ScalarProperty Name="CLEN_CD_ID" ColumnName="CLEN_CD_ID" />
                 <ScalarProperty Name="CLIE_CD_ID" ColumnName="CLIE_CD_ID" />
                 <ScalarProperty Name="TIRE_CD_ID" ColumnName="TIRE_CD_ID" />
@@ -10634,6 +10634,7 @@
                 <ScalarProperty Name="CLEN_IN_ASSISNTENCIA_TECNICA" ColumnName="CLEN_IN_ASSISNTENCIA_TECNICA" />
                 <ScalarProperty Name="CLEN_IN_ATIVO" ColumnName="CLEN_IN_ATIVO" />
                 <ScalarProperty Name="CLEN_TX_REFERENCIA_LOCAL_TEXT" ColumnName="CLEN_TX_REFERENCIA_LOCAL_TEXT" />
+                <ScalarProperty Name="CLEN_NM_EXIBE" ColumnName="CLEN_NM_EXIBE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12078,8 +12079,8 @@
                 <ScalarProperty Name="ATEN_DS_ENCERRAMENTO" ColumnName="ATEN_DS_ENCERRAMENTO" />
                 <ScalarProperty Name="ATEN_DT_CANCELAMENTO" ColumnName="ATEN_DT_CANCELAMENTO" />
                 <ScalarProperty Name="ATEN_DS_CANCELAMENTO" ColumnName="ATEN_DS_CANCELAMENTO" />
-                <ScalarProperty Name="ATEN_TX_OBSERVACAO" ColumnName="ATEN_TX_OBSERVACAO" />
                 <ScalarProperty Name="ATEN_IN_ATIVO" ColumnName="ATEN_IN_ATIVO" />
+                <ScalarProperty Name="ATEN_TX_OBSERVACAO" ColumnName="ATEN_TX_OBSERVACAO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
